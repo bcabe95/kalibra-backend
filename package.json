@@ -1,0 +1,9 @@
+{
+  "name": "kalibra-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend minimo de Kalibra: recibe una foto de comida y devuelve una estimacion de macros usando la API de Claude (Anthropic). Sin esto, ningun cliente estatico (el demo web o la app) puede llamar a una API de vision sin exponer la clave.",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
