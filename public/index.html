@@ -608,6 +608,7 @@
     "modal.activateDemo": { es:"Activar (demo)", en:"Activate (demo)", it:"Attiva (demo)", pt:"Ativar (demo)" },
     "modal.close": { es:"Cerrar", en:"Close", it:"Chiudi", pt:"Fechar" },
     "modal.howTo": { es:"Cómo hacerlo", en:"How to do it", it:"Come farlo", pt:"Como fazer" },
+    "modal.worksLabel": { es:"Trabaja: {muscle}", en:"Works: {muscle}", it:"Lavora: {muscle}", pt:"Trabalha: {muscle}" },
     "modal.figDisclaimer": { es:"Ilustración simplificada para guiarte en la forma general del movimiento — no reemplaza la supervisión de un profesional presencial, sobre todo si vas a usar cargas altas.", en:"Simplified illustration to guide you on the general form of the movement — it does not replace in-person professional supervision, especially if you'll use heavy loads.", it:"Illustrazione semplificata per guidarti sulla forma generale del movimento — non sostituisce la supervisione di un professionista di persona, soprattutto se userai carichi pesanti.", pt:"Ilustração simplificada para te guiar na forma geral do movimento — não substitui a supervisão de um profissional presencial, principalmente se for usar cargas altas." },
     "modal.searchVideo": { es:"Buscar video real en YouTube ↗", en:"Search for a real video on YouTube ↗", it:"Cerca un video reale su YouTube ↗", pt:"Buscar vídeo real no YouTube ↗" },
     "modal.restTimer": { es:"Temporizador de descanso", en:"Rest timer", it:"Timer di riposo", pt:"Cronômetro de descanso" },
@@ -1495,6 +1496,7 @@
     clearFigureAnimation();
     var patternKey = EXO_PATTERN[name] || "push";
     var displayName = trName(name);
+    var muscleGroup = muscleGroupForExercise(name);
     var cues = [0,1,2].map(function(i){ return t("cue."+patternKey+"."+i); });
     var ytUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(displayName + " técnica correcta ejercicio");
 
@@ -1507,7 +1509,8 @@
       '<div class="fig-card" id="figCard" hidden>' + renderFigure(patternKey, 168) + '</div>' +
       '<div class="eyebrow" style="text-align:center;margin-bottom:2px;">' + t("pattern."+patternKey) + '</div>' +
       '<h3 style="text-align:center;">' + displayName + '</h3>' +
-      '<div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;">' +
+      '<div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;">' +
+        (muscleGroup ? '<span class="pill accent">' + t("modal.worksLabel",{muscle:t("muscle."+muscleGroup)}) + '</span>' : '') +
         '<span class="pill ok">' + ex.sets + '×' + ex.reps + '</span>' +
         '<span class="pill">' + t("wk.rest") + ' ' + ex.rest + '</span>' +
       '</div>' +
@@ -2053,6 +2056,18 @@
 
   var MUSCLE_LABEL = { pecho:"Pecho", espalda:"Espalda", pierna:"Pierna", hombro:"Hombro", triceps:"Tríceps", biceps:"Bíceps" };
   var MUSCLE_ORDER = ["pecho","espalda","pierna","hombro","triceps","biceps"];
+
+  /** Busca en qué grupo muscular (casa o gym) vive un ejercicio, por su nombre exacto -- para mostrar "Trabaja: Pierna" en la ficha de detalle. */
+  function muscleGroupForExercise(name){
+    var locs = ["casa","gym"];
+    for(var i=0;i<locs.length;i++){
+      for(var j=0;j<MUSCLE_ORDER.length;j++){
+        var group = MUSCLE_ORDER[j];
+        if(MUSCLE_EXO[locs[i]][group].indexOf(name) !== -1) return group;
+      }
+    }
+    return null;
+  }
 
   // Sesión libre por grupo muscular — independiente del split fijo de la
   // semana y de los días/semana elegidos en el perfil. Usa todo el pool de
