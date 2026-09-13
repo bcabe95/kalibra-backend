@@ -331,6 +331,13 @@
   }
   .modal h3{ font-size:20px; margin-bottom:8px; }
   .modal p{ font-size:14px; color: var(--ink-soft); line-height:1.5; margin-bottom:16px; }
+  .modal-scroll{ max-height:60vh; overflow-y:auto; margin-bottom:16px; }
+  .modal-scroll p{ color: var(--ink); font-size:14px; line-height:1.5; margin-bottom:12px; }
+  .modal-doc-version{ font-size:11.5px; color:var(--ink-soft); margin-bottom:14px; }
+  .consent-check{ display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; cursor:pointer; }
+  .consent-check input{ margin-top:3px; width:18px; height:18px; flex-shrink:0; accent-color: var(--primary); }
+  .consent-check span{ font-size:13.5px; line-height:1.45; color: var(--ink); }
+  .consent-viewdoc{ margin:2px 0 0 28px; font-size:12.5px; color:var(--primary); font-weight:600; background:none; border:none; padding:0; cursor:pointer; text-decoration:underline; }
 
   @media (prefers-reduced-motion: no-preference){
     .hmac-fill, .ring-fg{ transition: all 0.5s ease; }
@@ -793,6 +800,28 @@
     "ob.conditions.title": { es:"¿Tienes alguna condición?", en:"Do you have any condition?", it:"Hai qualche condizione?", pt:"Você tem alguma condição?" },
     "ob.conditions.sub": { es:"Marca las que apliquen. Ajustamos tu rutina de ejercicio para evitar movimientos de más riesgo — puedes dejarlo en blanco si no aplica.", en:"Select any that apply. We'll adjust your workout plan to avoid higher-risk movements — leave it blank if none apply.", it:"Seleziona quelle che si applicano. Adattiamo il tuo piano di allenamento per evitare i movimenti più a rischio — lascia vuoto se non si applica nessuna.", pt:"Marque as que se aplicam. Ajustamos seu plano de treino para evitar movimentos de maior risco — deixe em branco se nenhuma se aplica." },
     "ob.conditions.disclaimer": { es:"Este ajuste es general, no reemplaza la indicación de un médico o kinesiólogo. Si tienes una condición de salud, consulta a un profesional antes de empezar a entrenar.", en:"This adjustment is general and doesn't replace medical advice. If you have a health condition, check with a professional before you start training.", it:"Questo adattamento è generale e non sostituisce il parere di un medico o fisioterapista. Se hai una condizione di salute, consulta un professionista prima di iniziare ad allenarti.", pt:"Este ajuste é geral e não substitui a orientação de um médico ou fisioterapeuta. Se você tem uma condição de saúde, consulte um profissional antes de começar a treinar." },
+    "consent.viewDoc": { es:"Ver documento completo", en:"View full document", it:"Vedi il documento completo", pt:"Ver documento completo" },
+    "consent.health.title": { es:"Antes de seguir: tus datos de salud", en:"Before continuing: your health data", it:"Prima di continuare: i tuoi dati sanitari", pt:"Antes de continuar: seus dados de saúde" },
+    "consent.health.text": { es:"En el paso siguiente puedes marcar si tienes alguna condición (espalda, rodillas, hombro, presión/corazón, embarazo) para ajustar tu rutina. Es información sensible y opcional — puedes dejarlo en blanco.", en:"In the next step you can mark if you have a condition (back, knees, shoulder, blood pressure/heart, pregnancy) to adjust your routine. This is sensitive, optional information — you can leave it blank.", it:"Nel passo successivo puoi indicare se hai una condizione (schiena, ginocchia, spalla, pressione/cuore, gravidanza) per adattare la tua routine. È un'informazione sensibile e facoltativa — puoi lasciarla vuota.", pt:"No próximo passo você pode marcar se tem alguma condição (costas, joelhos, ombro, pressão/coração, gravidez) para ajustar sua rotina. É uma informação sensível e opcional — pode deixar em branco." },
+    "consent.health.checkbox": { es:"Autorizo el tratamiento de mis datos de salud para personalizar mi planificación (opcional).", en:"I authorize the use of my health data to personalize my plan (optional).", it:"Autorizzo il trattamento dei miei dati sanitari per personalizzare la mia pianificazione (opzionale).", pt:"Autorizo o tratamento dos meus dados de saúde para personalizar meu planejamento (opcional)." },
+    "consent.legal.title": { es:"Últimos pasos", en:"Last steps", it:"Ultimi passi", pt:"Últimos passos" },
+    "consent.legal.sub": { es:"Antes de terminar tu registro, necesitamos tu aceptación de estos documentos.", en:"Before finishing your registration, we need you to accept these documents.", it:"Prima di completare la registrazione, abbiamo bisogno della tua accettazione di questi documenti.", pt:"Antes de terminar seu cadastro, precisamos da sua aceitação destes documentos." },
+    "consent.legal.terms": { es:"He leído y acepto los Términos y Condiciones.", en:"I have read and accept the Terms and Conditions.", it:"Ho letto e accetto i Termini e Condizioni.", pt:"Li e aceito os Termos e Condições." },
+    "consent.legal.privacy": { es:"He leído la Política de Privacidad y autorizo el tratamiento de mis datos necesarios para prestar el servicio.", en:"I have read the Privacy Policy and authorize the processing of my data needed to provide the service.", it:"Ho letto l'Informativa sulla Privacy e autorizzo il trattamento dei miei dati necessari per fornire il servizio.", pt:"Li a Política de Privacidade e autorizo o tratamento dos meus dados necessários para prestar o serviço." },
+    "consent.legal.marketing": { es:"Quiero recibir novedades y ofertas de Kalibra por correo (opcional).", en:"I want to receive Kalibra news and offers by email (optional).", it:"Voglio ricevere novità e offerte di Kalibra via email (opzionale).", pt:"Quero receber novidades e ofertas do Kalibra por e-mail (opcional)." },
+    "mem.preCheckoutDisclosure": { es:"Membresía mensual: $10.990 IVA incluido. La suscripción se renovará automáticamente cada mes hasta que sea cancelada. Puedes administrarla o cancelarla desde \"Mi cuenta\". Al continuar, aceptas las condiciones de contratación y la política de privacidad.", en:"Monthly membership: $10,990 CLP, tax included. The subscription renews automatically every month until cancelled. You can manage or cancel it from \"My account\". By continuing, you accept the membership terms and the privacy policy.", it:"Abbonamento mensile: $10.990 CLP, tasse incluse. L'abbonamento si rinnova automaticamente ogni mese fino alla cancellazione. Puoi gestirlo o annullarlo da \"Il mio account\". Continuando, accetti le condizioni di abbonamento e l'informativa sulla privacy.", pt:"Assinatura mensal: $10.990 CLP, impostos inclusos. A assinatura se renova automaticamente todo mês até ser cancelada. Você pode gerenciá-la ou cancelá-la em \"Minha conta\". Ao continuar, você aceita as condições da assinatura e a política de privacidade." },
+    "profile.legal.title": { es:"Legal y privacidad", en:"Legal & privacy", it:"Legale e privacy", pt:"Legal e privacidade" },
+    "profile.legal.terms": { es:"Términos y Condiciones", en:"Terms and Conditions", it:"Termini e Condizioni", pt:"Termos e Condições" },
+    "profile.legal.privacy": { es:"Política de Privacidad", en:"Privacy Policy", it:"Informativa sulla Privacy", pt:"Política de Privacidade" },
+    "profile.legal.membership": { es:"Condiciones de la Membresía", en:"Membership Terms", it:"Condizioni dell'Abbonamento", pt:"Condições da Assinatura" },
+    "profile.legal.training": { es:"Aviso de Entrenamiento y Salud", en:"Training & Health Notice", it:"Avviso su Allenamento e Salute", pt:"Aviso de Treino e Saúde" },
+    "profile.legal.consentHistory": { es:"{count} consentimiento(s) registrado(s) en este dispositivo.", en:"{count} consent record(s) on this device.", it:"{count} consenso/i registrato/i su questo dispositivo.", pt:"{count} consentimento(s) registrado(s) neste dispositivo." },
+    "profile.cancelMembership": { es:"Cancelar suscripción", en:"Cancel subscription", it:"Annulla abbonamento", pt:"Cancelar assinatura" },
+    "profile.cancelMembershipConfirmTitle": { es:"¿Cancelar tu suscripción?", en:"Cancel your subscription?", it:"Annullare il tuo abbonamento?", pt:"Cancelar sua assinatura?" },
+    "profile.cancelMembershipConfirmText": { es:"Dejarás de tener acceso a las funciones de la membresía al final del período ya pagado.", en:"You'll lose access to membership features at the end of your already-paid period.", it:"Perderai l'accesso alle funzioni dell'abbonamento alla fine del periodo già pagato.", pt:"Você perderá acesso aos recursos da assinatura no fim do período já pago." },
+    "profile.deleteAccount": { es:"Eliminar mi cuenta y mis datos", en:"Delete my account and data", it:"Elimina il mio account e i miei dati", pt:"Excluir minha conta e meus dados" },
+    "profile.deleteAccountConfirmTitle": { es:"¿Eliminar tu cuenta y tus datos?", en:"Delete your account and data?", it:"Eliminare il tuo account e i tuoi dati?", pt:"Excluir sua conta e seus dados?" },
+    "profile.deleteAccountConfirmText": { es:"Esto borra tu perfil, tu historial de comidas y peso, y tus consentimientos guardados en este dispositivo. No se puede deshacer.", en:"This deletes your profile, food and weight history, and saved consents on this device. This cannot be undone.", it:"Questo cancella il tuo profilo, la cronologia di pasti e peso, e i consensi salvati su questo dispositivo. Non può essere annullato.", pt:"Isso apaga seu perfil, histórico de comidas e peso, e consentimentos salvos neste dispositivo. Isso não pode ser desfeito." },
     "condition.espalda": { es:"Espalda / columna", en:"Back / spine", it:"Schiena / colonna", pt:"Costas / coluna" },
     "condition.rodillas": { es:"Rodillas / articulaciones", en:"Knees / joints", it:"Ginocchia / articolazioni", pt:"Joelhos / articulações" },
     "condition.hombro": { es:"Hombro", en:"Shoulder", it:"Spalla", pt:"Ombro" },
@@ -1617,7 +1646,21 @@
       water: {},        // { "2026-09-03": 4 }
       supplements: {},   // { "2026-09-03": {creatina:true} }
       weightLog: [],     // [{date, weight}]
-      completion: {}     // { "2026-09-03": {0:true,1:false} }
+      completion: {},    // { "2026-09-03": {0:true,1:false} }
+      // Flags de acceso rápido (gating de pantallas) — el historial
+      // auditable de verdad vive en consentLog.
+      termsAccepted: false,
+      privacyAccepted: false,
+      healthDataAccepted: false,
+      marketingOptIn: false,
+      consentLog: [],    // [{type,accepted,version,at}] — append-only
+      // Estado transitorio de las casillas MIENTRAS se completa el
+      // registro (se confirman recién en consentLog al terminar) —
+      // siempre arrancan sin marcar.
+      obHealthConsent: false,
+      obTermsChecked: false,
+      obPrivacyChecked: false,
+      obMarketingChecked: false
     };
   }
 
@@ -1642,6 +1685,33 @@
   }
   function saveState(){
     try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  // Registra en consentLog quién aceptó qué, cuándo y en qué versión del
+  // documento (append-only, nunca se borra un registro existente), y
+  // actualiza el flag de acceso rápido correspondiente. entries:
+  // [{type:"terms"|"privacy"|"health"|"marketing", accepted:true/false}]
+  function recordConsent(entries){
+    var now = new Date().toISOString();
+    entries.forEach(function(en){
+      state.consentLog.push({ type:en.type, accepted:en.accepted, version:LEGAL_VERSION, at:now });
+      if(en.type === "terms") state.termsAccepted = en.accepted;
+      else if(en.type === "privacy") state.privacyAccepted = en.accepted;
+      else if(en.type === "health") state.healthDataAccepted = en.accepted;
+      else if(en.type === "marketing") state.marketingOptIn = en.accepted;
+    });
+    saveState();
+  }
+
+  // Borra todo el estado local (perfil, registros, consentimientos) — lo
+  // usa "Eliminar mi cuenta y mis datos" en Perfil. No otorga una prueba
+  // gratis nueva si ya se había usado una en este dispositivo/navegador.
+  function deleteAccount(){
+    var hadTrial = state.trialStart !== null || state.trialUsed;
+    var fresh = defaultState();
+    fresh.trialUsed = hadTrial;
+    state = fresh;
+    saveState(); render();
   }
 
   function todayLog(){ return state.logs[todayStr()] || []; }
@@ -2202,7 +2272,7 @@
   function renderOnboarding(){
     var p = state.profile;
     var wrap = el('<div class="ob-wrap"></div>');
-    var dots = el('<div class="ob-dots"><span></span><span></span><span></span><span></span><span></span></div>');
+    var dots = el('<div class="ob-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>');
     Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle("on", i <= state.obStep); });
     wrap.appendChild(dots);
 
@@ -2317,6 +2387,21 @@
     }
 
     if(state.obStep === 4){
+      wrap.appendChild(el('<h1 style="font-size:26px;margin-bottom:6px;">'+t("consent.health.title")+'</h1>'));
+      wrap.appendChild(el('<p class="ob-hero">'+t("consent.health.text")+'</p>'));
+
+      var healthCheck = el('<label class="consent-check"><input type="checkbox" data-action="toggleob" data-arg="obHealthConsent"/><span>'+t("consent.health.checkbox")+'</span></label>');
+      healthCheck.querySelector("input").checked = !!state.obHealthConsent;
+      wrap.appendChild(healthCheck);
+      wrap.appendChild(el('<button type="button" class="consent-viewdoc" data-action="viewlegaldoc" data-arg="health">'+t("consent.viewDoc")+'</button>'));
+
+      var row4 = el('<div class="row" style="margin-top:16px;"></div>');
+      row4.appendChild(el('<button class="btn btn-ghost" data-action="ob-back">'+t("ob.back")+'</button>'));
+      row4.appendChild(el('<button class="btn btn-primary" data-action="ob-health-continue" style="flex:1">'+t("ob.continue")+'</button>'));
+      wrap.appendChild(row4);
+    }
+
+    if(state.obStep === 5){
       wrap.appendChild(el('<h1 style="font-size:26px;margin-bottom:6px;">'+t("ob.conditions.title")+'</h1>'));
       wrap.appendChild(el('<p class="ob-hero">'+t("ob.conditions.sub")+'</p>'));
 
@@ -2331,10 +2416,36 @@
 
       wrap.appendChild(el('<p style="font-size:11.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:20px;">'+t("ob.conditions.disclaimer")+'</p>'));
 
-      var row4 = el('<div class="row"></div>');
-      row4.appendChild(el('<button class="btn btn-ghost" data-action="ob-back">'+t("ob.back")+'</button>'));
-      row4.appendChild(el('<button class="btn btn-primary" data-action="ob-finish" style="flex:1">'+t("ob.finish")+'</button>'));
-      wrap.appendChild(row4);
+      var row5 = el('<div class="row"></div>');
+      row5.appendChild(el('<button class="btn btn-ghost" data-action="ob-back">'+t("ob.back")+'</button>'));
+      row5.appendChild(el('<button class="btn btn-primary" data-action="ob-next" style="flex:1">'+t("ob.continue")+'</button>'));
+      wrap.appendChild(row5);
+    }
+
+    if(state.obStep === 6){
+      wrap.appendChild(el('<h1 style="font-size:26px;margin-bottom:6px;">'+t("consent.legal.title")+'</h1>'));
+      wrap.appendChild(el('<p class="ob-hero">'+t("consent.legal.sub")+'</p>'));
+
+      var termsCheck = el('<label class="consent-check"><input type="checkbox" data-action="toggleob" data-arg="obTermsChecked"/><span>'+t("consent.legal.terms")+'</span></label>');
+      termsCheck.querySelector("input").checked = !!state.obTermsChecked;
+      wrap.appendChild(termsCheck);
+      wrap.appendChild(el('<button type="button" class="consent-viewdoc" data-action="viewlegaldoc" data-arg="terms">'+t("consent.viewDoc")+'</button>'));
+
+      var privacyCheck = el('<label class="consent-check" style="margin-top:14px;"><input type="checkbox" data-action="toggleob" data-arg="obPrivacyChecked"/><span>'+t("consent.legal.privacy")+'</span></label>');
+      privacyCheck.querySelector("input").checked = !!state.obPrivacyChecked;
+      wrap.appendChild(privacyCheck);
+      wrap.appendChild(el('<button type="button" class="consent-viewdoc" data-action="viewlegaldoc" data-arg="privacy">'+t("consent.viewDoc")+'</button>'));
+
+      var marketingCheck = el('<label class="consent-check" style="margin-top:14px;"><input type="checkbox" data-action="toggleob" data-arg="obMarketingChecked"/><span>'+t("consent.legal.marketing")+'</span></label>');
+      marketingCheck.querySelector("input").checked = !!state.obMarketingChecked;
+      wrap.appendChild(marketingCheck);
+
+      var row6 = el('<div class="row" style="margin-top:16px;"></div>');
+      row6.appendChild(el('<button class="btn btn-ghost" data-action="ob-legal-back">'+t("ob.back")+'</button>'));
+      var finishBtn = el('<button class="btn btn-primary" data-action="ob-finish" style="flex:1">'+t("ob.finish")+'</button>');
+      if(!state.obTermsChecked || !state.obPrivacyChecked) finishBtn.disabled = true;
+      row6.appendChild(finishBtn);
+      wrap.appendChild(row6);
     }
 
     return wrap;
@@ -2972,8 +3083,11 @@
         membFeat(t("mem.feat3"))+
         membFeat(t("mem.feat4"))+
       '</div>';
+    if(memStatus.status !== "active"){
+      mem.innerHTML += '<p style="font-size:12px;line-height:1.5;opacity:0.92;margin-bottom:12px;">'+t("mem.preCheckoutDisclosure")+'</p>';
+    }
     if(memStatus.status === "active"){
-      mem.innerHTML += '<div class="pill" style="background:rgba(255,255,255,0.2);color:#fff;">'+t("mem.active")+'</div>';
+      mem.innerHTML += '<button class="btn" style="background:rgba(255,255,255,0.2);color:#fff;width:100%;" data-action="cancelmembership">'+t("mem.active")+' · '+t("profile.cancelMembership")+'</button>';
     } else if(memStatus.status === "trial"){
       mem.innerHTML += '<button class="btn" style="background:rgba(255,255,255,0.2);color:#fff;width:100%;margin-top:6px;" data-action="subscribe">'+t("mem.upgradeNow")+'</button>';
     } else {
@@ -2981,6 +3095,15 @@
     }
     wrap.appendChild(mem);
     wrap.appendChild(el('<p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px;line-height:1.5;">'+t("mem.disclaimer")+'</p>'));
+
+    wrap.appendChild(el('<div class="section-title" style="margin-top:20px;"><h2>'+t("profile.legal.title")+'</h2></div>'));
+    var legalCard = el('<div class="card" style="padding:6px;"></div>');
+    [["terms","profile.legal.terms"],["privacy","profile.legal.privacy"],["membership","profile.legal.membership"],["training","profile.legal.training"]].forEach(function(pair){
+      legalCard.appendChild(el('<button type="button" class="row" style="width:100%;background:none;border:none;padding:11px 10px;cursor:pointer;font:inherit;" data-action="viewlegaldoc" data-arg="'+pair[0]+'"><span style="font-size:14px;font-weight:600;color:var(--ink);">'+t(pair[1])+'</span><span style="color:var(--ink-soft);">›</span></button>'));
+    });
+    wrap.appendChild(legalCard);
+    wrap.appendChild(el('<p style="font-size:11.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5;">'+t("profile.legal.consentHistory",{count:state.consentLog.length})+'</p>'));
+    wrap.appendChild(el('<button type="button" style="display:block;width:100%;text-align:center;background:none;border:none;padding:10px;margin-top:14px;cursor:pointer;font:inherit;color:var(--warn);font-weight:700;font-size:13px;" data-action="deleteaccount">'+t("profile.deleteAccount")+'</button>'));
 
     wrap.appendChild(el('<div class="section-title" style="margin-top:20px;"><h2>'+t("profile.suggestions")+'</h2></div>'));
     var sugCard = el('<div class="card"></div>');
@@ -3033,9 +3156,14 @@
         membFeat(t("mem.feat3"))+
         membFeat(t("mem.feat4"))+
       '</div>'+
-      '<button class="btn" style="background:#fff;color:var(--accent);width:100%;margin-top:6px;" data-action="subscribe">'+t("mem.subscribe")+'</button>';
+      '<p style="font-size:12px;line-height:1.5;opacity:0.92;margin-bottom:12px;">'+t("mem.preCheckoutDisclosure")+'</p>'+
+      '<button class="btn" style="background:#fff;color:var(--accent);width:100%;" data-action="subscribe">'+t("mem.subscribe")+'</button>';
     wrap.appendChild(mem);
     wrap.appendChild(el('<p style="font-size:11.5px;color:var(--ink-soft);margin-top:10px;line-height:1.5;">'+t("mem.disclaimer")+'</p>'));
+    var legalLinks = el('<div class="row" style="gap:16px;margin-top:6px;"></div>');
+    legalLinks.appendChild(el('<button type="button" style="background:none;border:none;padding:0;cursor:pointer;font:inherit;color:var(--primary);font-weight:600;font-size:12.5px;" data-action="viewlegaldoc" data-arg="membership">'+t("profile.legal.membership")+'</button>'));
+    legalLinks.appendChild(el('<button type="button" style="background:none;border:none;padding:0;cursor:pointer;font:inherit;color:var(--primary);font-weight:600;font-size:12.5px;" data-action="viewlegaldoc" data-arg="privacy">'+t("profile.legal.privacy")+'</button>'));
+    wrap.appendChild(legalLinks);
 
     var devCard = el('<div class="card" style="margin-top:26px;"></div>');
     devCard.innerHTML =
@@ -3067,6 +3195,68 @@
     modalRoot.appendChild(backdrop);
   }
   function closeModal(){ clearRestTimer(); clearFigureAnimation(); modalRoot.innerHTML = ""; }
+
+  /* -- Documentos legales -------------------------------------------- */
+  // Mismo contenido (resumido) que en la app nativa (legalDocs.ts) y que el
+  // documento completo publicado en el sitio/Artifact — SOLO en español,
+  // ver la nota de legalDocs.ts sobre por qué no se traduce. Sube esta
+  // versión (y agrega un registro nuevo a consentLog) si el contenido
+  // legal cambia de forma relevante.
+  var LEGAL_VERSION = "1.0";
+  var LEGAL_DOCS = {
+    terms: { title:"Términos y Condiciones de Uso", paragraphs:[
+      "Kalibra es una aplicación de nutrición y entrenamiento que, a partir de los datos que entregas, calcula un déficit o superávit calórico personalizado, genera un plan de comidas y una rutina semanal, y te permite registrar tu progreso diario. Incluye una función opcional de estimación de calorías por foto, usando un servicio de inteligencia artificial de terceros.",
+      "Kalibra no es un servicio médico, nutricional ni de entrenamiento personalizado prestado por un profesional humano.",
+      "Debes tener al menos 18 años para usar Kalibra y la información que entregues sobre ti debe ser veraz.",
+      "Debes mantener tus datos razonablemente actualizados, usar la app para tu propio seguimiento personal, y no usar la función de foto con IA para contenido que no sea comida, ilegal u ofensivo.",
+      "Puedes eliminar tu cuenta y tus datos en cualquier momento desde Perfil → Eliminar mi cuenta y mis datos.",
+      "La marca, el diseño y la lógica de cálculo de Kalibra son propiedad de [Razón social]. Tus propios datos (peso, comidas, progreso) son tuyos.",
+      "Kalibra entrega estimaciones generales, no garantiza resultados físicos específicos, y esto no limita responsabilidad en casos de negligencia real o incumplimiento grave de nuestra parte, conforme a la Ley del Consumidor.",
+      "Estos Términos se rigen por las leyes de Chile. Consultas: [correo@dominio.cl]."
+    ]},
+    privacy: { title:"Política de Privacidad", paragraphs:[
+      "Tu perfil, tus comidas y tu progreso se guardan en tu propio navegador/teléfono, no en un servidor nuestro. Lo único que sale de tu dispositivo es la foto de comida, si usas esa función, y solo para estimar sus calorías, sin guardarla después.",
+      "Datos que recopilamos: perfil (nombre opcional, sexo, edad, estatura, peso, actividad, objetivo), condiciones de salud (opcionales), comidas y bebidas registradas, agua, suplementos, peso a lo largo del tiempo, entrenamientos completados, fotos de comida (solo si usas esa función) y las sugerencias que envíes.",
+      "Todo lo anterior se guarda localmente. Si borras los datos del sitio o usas 'Eliminar mi cuenta y mis datos', se borra y no conservamos una copia en paralelo.",
+      "Usamos tus datos para calcular tu meta calórica y macronutrientes, generar tu plan y rutina, ajustarla según tus condiciones de salud, mostrarte tu progreso, y estimar las calorías de una foto. No los usamos para publicidad ni los vendemos a terceros.",
+      "Si usas la función de foto con IA, la imagen se envía a nuestro servidor y de ahí a Anthropic (proveedor de la IA) solo para ese análisis puntual — no queda guardada después. Ningún otro dato de tu perfil sale de tu dispositivo.",
+      "Puedes acceder, corregir o eliminar tus datos en cualquier momento. Conforme a la Ley 19.628 y a la nueva ley de protección de datos personales (vigente desde el 1 de diciembre de 2026), también puedes ejercer tus derechos escribiendo a [correo@dominio.cl].",
+      "Kalibra no está dirigida a menores de 18 años."
+    ]},
+    membership: { title:"Condiciones de la Membresía", paragraphs:[
+      "Plan único: $10.990 CLP al mes, IVA incluido. Incluye 3 días de prueba gratuita la primera vez que te registras en este dispositivo.",
+      "Terminada la prueba gratuita, la membresía se cobra mensualmente y se renueva en forma automática cada mes hasta que la canceles.",
+      "Puedes cancelar cuando quieras desde Perfil → Membresía → Cancelar suscripción. Cancelar detiene el próximo cobro; no genera un reembolso automático del período ya pagado. Mantienes acceso hasta el final del período que ya pagaste.",
+      "Conforme a la Ley 19.496 (SERNAC), tienes derecho a retractarte dentro de los 10 días corridos siguientes a la contratación, si no has hecho uso efectivo del servicio pagado, escribiendo a [correo@dominio.cl].",
+      "Si el cobro mensual es rechazado, se reintentará según la política del medio de pago; si no se logra cobrar, tu membresía queda suspendida hasta que se regularice o canceles."
+    ]},
+    health: { title:"Consentimiento para Datos de Salud", paragraphs:[
+      "En el paso siguiente puedes marcar si tienes espalda/columna, rodillas, hombro, presión alta/corazón o embarazo, para ajustar tu rutina evitando movimientos de más riesgo.",
+      "Es información sensible y opcional — puedes dejarlo en blanco. Si la entregas, la usamos solo para adaptar tus ejercicios dentro de esta app, se guarda en tu dispositivo y puedes borrarla cuando quieras desde tu Perfil."
+    ]},
+    training: { title:"Aviso sobre Entrenamiento y Salud", paragraphs:[
+      "Las rutinas, planes de alimentación y ajustes por condición de salud que entrega Kalibra son recomendaciones generales, calculadas a partir de fórmulas públicas y de lo que tú declaras — no son una evaluación médica, nutricional ni kinesiológica personalizada.",
+      "Si tienes una lesión, una enfermedad, estás embarazada o sientes dolor o síntomas al entrenar, consulta a un profesional de la salud antes de seguir un plan de ejercicio o alimentación, y antes de usar cargas altas.",
+      "Este aviso no nos exime de responsabilidad si actuamos con negligencia real o si te hacemos una promesa engañosa sobre lo que la app puede lograr."
+    ]}
+  };
+  function showLegalDocModal(docKey){
+    var doc = LEGAL_DOCS[docKey];
+    if(!doc) return;
+    modalRoot.innerHTML = "";
+    var backdrop = el('<div class="modal-backdrop" data-action="closemodal"></div>');
+    var modal = el('<div class="modal"></div>');
+    modal.addEventListener("click", function(e){ e.stopPropagation(); });
+    modal.innerHTML = '<h3>'+doc.title+'</h3><div class="modal-doc-version">Versión '+LEGAL_VERSION+' · Kalibra</div>';
+    var scroll = el('<div class="modal-scroll"></div>');
+    doc.paragraphs.forEach(function(p){ scroll.appendChild(el('<p>'+escapeHtml(p)+'</p>')); });
+    modal.appendChild(scroll);
+    var cancel = el('<button class="btn btn-ghost btn-block">'+t("modal.close")+'</button>');
+    cancel.addEventListener("click", closeModal);
+    modal.appendChild(cancel);
+    backdrop.appendChild(modal);
+    modalRoot.appendChild(backdrop);
+  }
 
   // Correo de destino de "Sugerencias" codificado en base64 — no aparece
   // como texto plano en el código ni se muestra en ningún lugar de la
@@ -3133,8 +3323,26 @@
     if(action === "ob-next"){
       var wrap = actionEl.closest(".ob-wrap");
       collectOnboardingInputs(wrap);
-      state.obStep = Math.min(4, state.obStep+1);
+      state.obStep = Math.min(6, state.obStep+1);
       saveState(); render(); return;
+    }
+    if(action === "ob-health-continue"){
+      // Si no autorizó datos de salud, no se piden ni se guardan
+      // condiciones — se salta directo a la casilla de Términos.
+      if(state.obHealthConsent){ state.obStep = 5; }
+      else { state.profile.conditions = []; state.obStep = 6; }
+      saveState(); render(); return;
+    }
+    if(action === "ob-legal-back"){
+      state.obStep = state.obHealthConsent ? 5 : 4;
+      saveState(); render(); return;
+    }
+    if(action === "toggleob"){
+      state[arg] = !state[arg];
+      saveState(); render(); return;
+    }
+    if(action === "viewlegaldoc"){
+      showLegalDocModal(arg); return;
     }
     if(action === "condpick"){
       var conds = (state.profile.conditions || []).slice();
@@ -3163,8 +3371,15 @@
       saveState(); render(); return;
     }
     if(action === "ob-finish"){
+      if(!state.obTermsChecked || !state.obPrivacyChecked) return; // defensivo — el botón ya viene deshabilitado
       var wrap3 = actionEl.closest(".ob-wrap");
       collectOnboardingInputs(wrap3);
+      recordConsent([
+        { type:"terms", accepted: state.obTermsChecked },
+        { type:"privacy", accepted: state.obPrivacyChecked },
+        { type:"health", accepted: state.obHealthConsent },
+        { type:"marketing", accepted: state.obMarketingChecked }
+      ]);
       state.onboarded = true;
       state.screen = "home";
       // Solo se otorga prueba gratis si nunca se ha usado una en este
@@ -3385,6 +3600,21 @@
     if(action === "subscribe"){
       showModal(t("modal.subscribeTitle"), t("modal.subscribeText"), t("modal.activateDemo"), function(){
         state.subscribed = true; saveState(); render();
+      });
+      return;
+    }
+    if(action === "cancelmembership"){
+      // Demo: en la app publicada esto abre la administración de
+      // suscripciones nativa (App Store / Google Play) en vez de solo
+      // apagar el flag local.
+      showModal(t("profile.cancelMembershipConfirmTitle"), t("profile.cancelMembershipConfirmText"), t("profile.cancelMembership"), function(){
+        state.subscribed = false; saveState(); render();
+      });
+      return;
+    }
+    if(action === "deleteaccount"){
+      showModal(t("profile.deleteAccountConfirmTitle"), t("profile.deleteAccountConfirmText"), t("profile.deleteAccountConfirmButton"), function(){
+        deleteAccount();
       });
       return;
     }
