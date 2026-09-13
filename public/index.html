@@ -1872,8 +1872,10 @@
   }
 
   function bmi(p){
-    var m = p.height/100;
-    return p.weight / (m*m);
+    // Resguardo contra division por cero (estatura 0 -> "Infinity" en
+    // pantalla) -- mismo resguardo que la app nativa.
+    var m = Math.max(p.height, 1)/100;
+    return Math.max(p.weight, 0) / (m*m);
   }
   function bmiLabel(v){
     if(v < 18.5) return t("bmi.low");
@@ -3305,20 +3307,40 @@
     }
     var field = e.target.dataset.field;
     if(!field) return;
-    var v = e.target.value;
-    if(["age","height","weight","goalWeight","days"].indexOf(field) !== -1) v = Number(v);
-    state.profile[field] = v;
+    state.profile[field] = clampFieldValue(e.target, field);
     saveState();
   });
+
+  var NUMERIC_PROFILE_FIELDS = ["age","height","weight","goalWeight","days"];
+
+  // Antes había DOS caminos separados escribiendo state.profile (este
+  // listener de "change" y collectOnboardingInputs), y solo uno tenía un
+  // resguardo -- pero como el listener de "change" corre PRIMERO (al
+  // perder el foco, justo antes de tocar "Continuar") y no tenía
+  // resguardo, dejaba guardado un 0 (ej. estatura) directo. Cuando
+  // collectOnboardingInputs corría después e intentaba usar
+  // "state.profile[field] || ..." como respaldo, ese respaldo YA estaba
+  // corrompido por el primer camino -- terminaba guardando 0 igual. Ahora
+  // los dos usan la misma función, que acota al rango real del campo
+  // (min/max del input) en vez de solo intentar "no guardar si es falsy".
+  function clampFieldValue(el, field){
+    var v = el.value;
+    if(field === "name") return v.trim();
+    if(NUMERIC_PROFILE_FIELDS.indexOf(field) === -1) return v;
+    var n = Number(v);
+    if(v === "" || Number.isNaN(n)) return state.profile[field];
+    var minAttr = el.min !== undefined && el.min !== "" ? Number(el.min) : null;
+    var maxAttr = el.max !== undefined && el.max !== "" ? Number(el.max) : null;
+    if(minAttr !== null && n < minAttr) n = minAttr;
+    if(maxAttr !== null && n > maxAttr) n = maxAttr;
+    if(n !== Number(v)) el.value = n; // refleja el ajuste en el campo, no solo en el estado
+    return n;
+  }
 
   function collectOnboardingInputs(container){
     if(!container) return;
     Array.prototype.forEach.call(container.querySelectorAll("[data-field]"), function(inp){
-      var field = inp.dataset.field;
-      var v = inp.value;
-      if(["age","height","weight","goalWeight","days"].indexOf(field) !== -1) v = Number(v) || state.profile[field];
-      if(field === "name") v = v.trim();
-      state.profile[field] = v;
+      state.profile[inp.dataset.field] = clampFieldValue(inp, inp.dataset.field);
     });
   }
 
