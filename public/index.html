@@ -265,9 +265,11 @@
 
   /* exercise form figure */
   .fig-svg{ display:block; }
-  .fig-limb{ stroke: var(--ink-soft); stroke-width:4.5; stroke-linecap:round; fill:none; }
-  .fig-torso{ stroke: var(--primary); stroke-width:5.5; stroke-linecap:round; fill:none; }
+  .fig-limb{ stroke: var(--ink-soft); stroke-width:7.5; stroke-linecap:round; fill:none; }
+  .fig-torso{ stroke: var(--primary); stroke-width:11; stroke-linecap:round; fill:none; }
   .fig-head{ fill: var(--ink-soft); stroke:none; }
+  .fig-joint-torso{ fill: var(--primary); stroke:none; }
+  .fig-joint-limb{ fill: var(--ink-soft); stroke:none; }
   .fig-floor{ stroke: var(--line); stroke-width:2.5; stroke-linecap:round; }
   .fig-bar{ stroke: var(--line); stroke-width:3; stroke-linecap:round; }
   .fig-prop{ stroke: var(--accent); stroke-width:3.5; stroke-linecap:round; fill: var(--accent); }
@@ -1335,12 +1337,21 @@
     var parts = [];
     if(P.floorY){ parts.push('<line class="fig-floor" x1="12" y1="'+P.floorY+'" x2="88" y2="'+P.floorY+'"/>'); }
     if(P.fixedBar){ parts.push('<line class="fig-bar" x1="'+P.fixedBar[0]+'" y1="'+P.fixedBar[1]+'" x2="'+P.fixedBar[2]+'" y2="'+P.fixedBar[3]+'"/>'); }
+    // Trazos gruesos + un circulo en cada articulacion -- asi se ve un
+    // cuerpo con volumen en vez de un muñeco de palitos, sin cambiar el
+    // dato de pose (mismos puntos, solo se dibujan mas "llenos").
     parts.push(figLine(A.hip,A.knee,B.hip,B.knee,"fig-limb",animate));
     parts.push(figLine(A.knee,A.foot,B.knee,B.foot,"fig-limb",animate));
     parts.push(figLine(A.shoulder,A.hip,B.shoulder,B.hip,"fig-torso",animate));
     parts.push(figLine(A.shoulder,A.elbow,B.shoulder,B.elbow,"fig-limb",animate));
     parts.push(figLine(A.elbow,A.hand,B.elbow,B.hand,"fig-limb",animate));
-    parts.push(figCircle(A.head,B.head,7,"fig-head",animate));
+    parts.push(figCircle(A.shoulder,B.shoulder,5.5,"fig-joint-torso",animate));
+    parts.push(figCircle(A.hip,B.hip,5.5,"fig-joint-torso",animate));
+    parts.push(figCircle(A.elbow,B.elbow,4,"fig-joint-limb",animate));
+    parts.push(figCircle(A.knee,B.knee,4,"fig-joint-limb",animate));
+    parts.push(figCircle(A.hand,B.hand,4.5,"fig-joint-limb",animate));
+    parts.push(figCircle(A.foot,B.foot,4.5,"fig-joint-limb",animate));
+    parts.push(figCircle(A.head,B.head,9.5,"fig-head",animate));
     if(P.prop){
       var j = P.prop.joint;
       if(P.prop.type === "dumbbell"){
