@@ -39,20 +39,31 @@ vercel env add ANTHROPIC_API_KEY
 vercel env add APP_SHARED_SECRET
 ```
 
-## 3. Conectar el demo web
+## 3. El demo web vive en `public/index.html`, no en el Artifact de Claude
 
-Al terminar el deploy, Vercel te da una URL como
-`https://kalibra-backend-tuusuario.vercel.app`. El endpoint completo es:
+**Importante — esto costó descubrirlo:** los Artifacts de Claude (el link
+`claude.ai/code/artifact/...`) bloquean por política de seguridad que la
+página haga `fetch()` a cualquier servidor externo, el tuyo incluido. Por
+eso la app completa (`public/index.html`, la misma que el Artifact pero
+con `FOOD_ANALYZE_URL = "/api/analyze-food"` en vez de vacío) se publica
+**en este mismo proyecto de Vercel**, junto al backend — al ser el mismo
+origen, el `fetch()` sí funciona. El link del Artifact en claude.ai sigue
+existiendo como demo de solo-formulario-manual (útil para mostrar el resto
+de la app), pero la foto con IA solo funciona en la URL de Vercel.
 
+Al terminar el deploy, tu app completa (con foto funcionando) queda en:
+```
+https://kalibra-backend-tuusuario.vercel.app/
+```
+y el endpoint que usa internamente en:
 ```
 https://kalibra-backend-tuusuario.vercel.app/api/analyze-food
 ```
 
-Pásame esa URL (y el `APP_SHARED_SECRET` si pusiste uno — ambos son
-seguros de compartir, no son la clave de Anthropic) para que actualice las
-constantes `FOOD_ANALYZE_URL` / `FOOD_ANALYZE_SECRET` en
-`kalibra-app.html` y vuelva a publicar el demo. La `ANTHROPIC_API_KEY`
-nunca hace falta compartirla — se queda solo en Vercel.
+Si más adelante le agregas un dominio propio en Vercel, no hace falta
+tocar nada del código — `FOOD_ANALYZE_URL` es una ruta relativa
+(`/api/analyze-food`), así que sigue funcionando igual sea cual sea el
+dominio.
 
 ## Probar el endpoint a mano
 
