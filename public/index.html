@@ -616,6 +616,9 @@
     "modal.close": { es:"Cerrar", en:"Close", it:"Chiudi", pt:"Fechar" },
     "modal.howTo": { es:"Cómo hacerlo", en:"How to do it", it:"Come farlo", pt:"Como fazer" },
     "modal.worksLabel": { es:"Trabaja: {muscle}", en:"Works: {muscle}", it:"Lavora: {muscle}", pt:"Trabalha: {muscle}" },
+    "subregion.alto": { es:"parte alta", en:"upper part", it:"parte alta", pt:"parte superior" },
+    "subregion.medio": { es:"parte media", en:"middle part", it:"parte media", pt:"parte média" },
+    "subregion.bajo": { es:"parte baja", en:"lower part", it:"parte bassa", pt:"parte inferior" },
     "modal.figDisclaimer": { es:"Ilustración simplificada para guiarte en la forma general del movimiento — no reemplaza la supervisión de un profesional presencial, sobre todo si vas a usar cargas altas.", en:"Simplified illustration to guide you on the general form of the movement — it does not replace in-person professional supervision, especially if you'll use heavy loads.", it:"Illustrazione semplificata per guidarti sulla forma generale del movimento — non sostituisce la supervisione di un professionista di persona, soprattutto se userai carichi pesanti.", pt:"Ilustração simplificada para te guiar na forma geral do movimento — não substitui a supervisão de um profissional presencial, principalmente se for usar cargas altas." },
     "modal.searchVideo": { es:"Buscar video real en YouTube ↗", en:"Search for a real video on YouTube ↗", it:"Cerca un video reale su YouTube ↗", pt:"Buscar vídeo real no YouTube ↗" },
     "modal.restTimer": { es:"Temporizador de descanso", en:"Rest timer", it:"Timer di riposo", pt:"Cronômetro de descanso" },
@@ -1526,6 +1529,8 @@
     var patternKey = EXO_PATTERN[name] || "push";
     var displayName = trName(name);
     var muscleGroup = muscleGroupForExercise(name);
+    var subRegion = muscleGroup === "pecho" ? chestSubRegion(name) : null;
+    var muscleDisplay = muscleGroup ? (subRegion ? t("muscle."+muscleGroup) + " (" + t("subregion."+subRegion) + ")" : t("muscle."+muscleGroup)) : "";
     var cues = [0,1,2].map(function(i){ return t("cue."+patternKey+"."+i); });
     var ytUrl = "https://www.youtube.com/results?search_query=" + encodeURIComponent(displayName + " técnica correcta ejercicio");
 
@@ -1539,7 +1544,7 @@
       '<div class="eyebrow" style="text-align:center;margin-bottom:2px;">' + t("pattern."+patternKey) + '</div>' +
       '<h3 style="text-align:center;">' + displayName + '</h3>' +
       '<div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;">' +
-        (muscleGroup ? '<span class="pill accent">' + t("modal.worksLabel",{muscle:t("muscle."+muscleGroup)}) + '</span>' : '') +
+        (muscleGroup ? '<span class="pill accent">' + t("modal.worksLabel",{muscle:muscleDisplay}) + '</span>' : '') +
         '<span class="pill ok">' + ex.sets + '×' + ex.reps + '</span>' +
         '<span class="pill">' + t("wk.rest") + ' ' + ex.rest + '</span>' +
       '</div>' +
@@ -2138,6 +2143,26 @@
     }
     return null;
   }
+
+  // Qué parte del pecho enfatiza cada ejercicio — mismo criterio que la app
+  // nativa (exercises.ts): "alto" = torso inclinado con la cabeza más baja
+  // que las caderas en el empuje (press/flexión inclinada), "bajo" = cabeza
+  // más alta (fondos, flexiones con manos elevadas), "medio" = sin
+  // inclinación (banco plano / flexión estándar). Solo pecho tiene
+  // sub-región mapeada por ahora.
+  var CHEST_SUBREGION = {
+    "Flexiones de pecho estándar": "medio",
+    "Flexiones inclinadas (pies elevados)": "alto",
+    "Flexiones declinadas (manos elevadas)": "bajo",
+    "Fondos en silla (pecho)": "bajo",
+    "Flexiones con palmada": "medio",
+    "Press de banca con barra": "medio",
+    "Press inclinado con mancuernas": "alto",
+    "Aperturas en polea (cruce)": "medio",
+    "Fondos en paralelas (pecho)": "bajo",
+    "Press en máquina": "medio"
+  };
+  function chestSubRegion(name){ return CHEST_SUBREGION[name] || null; }
 
   // Sesión libre por grupo muscular — independiente del split fijo de la
   // semana y de los días/semana elegidos en el perfil. Usa todo el pool de
