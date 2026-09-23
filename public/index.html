@@ -556,6 +556,7 @@
     "wk.programOf": { es:"programa de {days} días armado por bloques, como un coach", en:"a {days}-day program built in blocks, like a coach would", it:"programma di {days} giorni costruito a blocchi, come farebbe un coach", pt:"programa de {days} dias montado em blocos, como um coach" },
     "wk.mainRestNote": { es:"El ejercicio {principal} de cada bloque usa 3-5 min de descanso, el estándar de fuerza para llegar fresco a cada serie pesada. Los accesorios (tríceps, bíceps, elevaciones) descansan menos porque no lo necesitan.", en:"The {principal} exercise in each block uses 3-5 min of rest, the strength standard to arrive fresh at each heavy set. Accessories (triceps, biceps, raises) rest less because they don't need it.", it:"L'esercizio {principal} di ogni blocco usa 3-5 min di riposo, lo standard di forza per arrivare fresco a ogni serie pesante. Gli accessori (tricipiti, bicipiti, alzate) riposano meno perché non ne hanno bisogno.", pt:"O exercício {principal} de cada bloco usa 3-5 min de descanso, o padrão de força para chegar descansado em cada série pesada. Os acessórios (tríceps, bíceps, elevações) descansam menos porque não precisam." },
     "wk.mainRestNote.principal": { es:"principal", en:"main", it:"principale", pt:"principal" },
+    "wk.anotherCombo": { es:"Otra combinación", en:"Another combination", it:"Un'altra combinazione", pt:"Outra combinação" },
     "wk.casa": { es:"Casa", en:"Home", it:"Casa", pt:"Casa" },
     "wk.gym": { es:"Gimnasio", en:"Gym", it:"Palestra", pt:"Academia" },
     "wk.muscleTitle": { es:"Entrenar por grupo muscular", en:"Train by muscle group", it:"Allenati per gruppo muscolare", pt:"Treinar por grupo muscular" },
@@ -1104,10 +1105,21 @@
     brazos: "Superserie tríceps-bíceps: siéntelos arder, es la señal de que el estímulo fue suficiente."
   };
 
-  function pickFrom(pool, count, fromEnd){
+  // Igual que rotar un mazo de cartas — desplaza el pool `seed` posiciones
+  // antes de elegir, sin repetir ítems ni cambiar su orden relativo. Con
+  // seed=0 (o sin pasarlo) el resultado es idéntico al de siempre.
+  function rotatePool(pool, seed){
+    var n = pool.length;
+    if(n === 0 || !seed) return pool;
+    var offset = ((seed % n) + n) % n;
+    return pool.slice(offset).concat(pool.slice(0, offset));
+  }
+
+  function pickFrom(pool, count, fromEnd, seed){
+    var rotated = rotatePool(pool, seed || 0);
     var out = [];
     for(var i=0;i<count;i++){
-      out.push(fromEnd ? pool[pool.length-1-i] : pool[i]);
+      out.push(fromEnd ? rotated[rotated.length-1-i] : rotated[i]);
     }
     return out;
   }
@@ -1124,12 +1136,12 @@
     return week % 2;
   }
 
-  function buildFridayAlt(location, goal, parity, conditions){
+  function buildFridayAlt(location, goal, parity, conditions, seed){
     var lib = MUSCLE_EXO[location];
     if(parity === 0){
       var poolPierna = filterForConditions(lib.pierna, conditions), poolPecho = filterForConditions(lib.pecho, conditions),
           poolEspalda = filterForConditions(lib.espalda, conditions), poolHombro = filterForConditions(lib.hombro, conditions);
-      var names = [pickFrom(poolPierna,1)[0], pickFrom(poolPecho,1)[0], pickFrom(poolEspalda,1)[0], pickFrom(poolHombro,1)[0]];
+      var names = [pickFrom(poolPierna,1,false,seed)[0], pickFrom(poolPecho,1,false,seed)[0], pickFrom(poolEspalda,1,false,seed)[0], pickFrom(poolHombro,1,false,seed)[0]];
       return {
         day:"Viernes", title:"Full Body", note:COACH_NOTES.fullbody,
         exercises: names.map(function(n){ return makeExercise(n,"compound",goal); }),
@@ -1137,8 +1149,8 @@
       };
     }
     var triPool = filterForConditions(lib.triceps, conditions), biPool = filterForConditions(lib.biceps, conditions);
-    var tri = pickFrom(triPool, Math.min(3,triPool.length), true);
-    var bi = pickFrom(biPool, Math.min(3,biPool.length), true);
+    var tri = pickFrom(triPool, Math.min(3,triPool.length), true, seed);
+    var bi = pickFrom(biPool, Math.min(3,biPool.length), true, seed);
     return {
       day:"Viernes", title:"Brazos — Tríceps y Bíceps", note:COACH_NOTES.brazos,
       exercises: tri.concat(bi).map(function(n){ return makeExercise(n,"isolation",goal); })
@@ -1654,6 +1666,7 @@
       profile: { name:"", sex:"mujer", age:28, height:165, weight:70, goalWeight:63,
                  activity:"moderado", goal:"bajar", location:"casa", days:4, conditions:[] },
       mealSeed: 0,
+      workoutSeed: 0,
       workoutDayFilter: "casa",
       musclePickerOpen: false,
       selectedMuscle: null,
@@ -2117,20 +2130,20 @@
     return { items: scaled, totals: totals };
   }
 
-  function buildWorkoutPlan(location, goal, days, conditions){
+  function buildWorkoutPlan(location, goal, days, conditions, seed){
     var loc = location === "gym" ? "gym" : "casa";
     var lib = MUSCLE_EXO[loc];
     var template = SPLIT_TEMPLATES[days] || SPLIT_TEMPLATES[4];
 
     return template.map(function(day){
       if(day.blocks === "__ALT__"){
-        return buildFridayAlt(loc, goal, currentWeekParity(), conditions);
+        return buildFridayAlt(loc, goal, currentWeekParity(), conditions, seed);
       }
       var exercises = [];
       day.blocks.forEach(function(block){
         var group = block[0], count = block[1];
         var pool = filterForConditions(lib[group] || [], conditions);
-        var picks = pickFrom(pool, Math.min(count, pool.length), false);
+        var picks = pickFrom(pool, Math.min(count, pool.length), false, seed);
         picks.forEach(function(name, i){
           // El primer ejercicio de un grupo grande (pecho/espalda/pierna/hombro)
           // es el movimiento principal; el resto, accesorio.
@@ -2856,11 +2869,15 @@
     var p = state.profile;
     var loc = state.workoutDayFilter;
     var conditions = p.conditions || [];
-    var plan = buildWorkoutPlan(loc, p.goal, p.days, conditions);
+    var plan = buildWorkoutPlan(loc, p.goal, p.days, conditions, state.workoutSeed);
     var completion = todayCompletion();
 
     var wrap = el('<div></div>');
-    wrap.appendChild(el('<h1 style="font-size:24px;margin:6px 0 2px;">'+t("wk.title")+'</h1>'));
+    var titleRow = el('<div class="row" style="align-items:flex-start;margin:6px 0 2px;"></div>');
+    titleRow.innerHTML =
+      '<h1 style="font-size:24px;margin:0;">'+t("wk.title")+'</h1>'+
+      '<button class="btn btn-line btn-sm" data-action="remixworkouts">'+t("wk.anotherCombo")+'</button>';
+    wrap.appendChild(titleRow);
     wrap.appendChild(el('<p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;">'+t("sess."+({bajar:"circuito",mantener:"moderado",ganar:"fuerza"}[p.goal]))+' · '+t("wk.programOf",{days:p.days})+'</p>'));
     wrap.appendChild(el('<p style="font-size:12px;color:var(--ink-soft);margin-bottom:14px;line-height:1.5;">'+t("wk.mainRestNote",{principal:'<strong style="color:var(--ink);">'+t("wk.mainRestNote.principal")+'</strong>'})+'</p>'));
 
@@ -3622,6 +3639,7 @@
       saveState(); render(); return;
     }
     if(action === "remixmeals"){ state.mealSeed++; saveState(); render(); return; }
+    if(action === "remixworkouts"){ state.workoutSeed++; saveState(); render(); return; }
 
     if(action === "water+"){ state.water[todayStr()] = Math.min(20, todayWater()+1); saveState(); render(); return; }
     if(action === "water-"){ state.water[todayStr()] = Math.max(0, todayWater()-1); saveState(); render(); return; }
