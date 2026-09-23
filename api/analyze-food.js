@@ -1,4 +1,4 @@
-// Backend minimo de Kalibra: recibe una foto de comida (en base64) y le pide
+// Backend minimo de KalibraFit: recibe una foto de comida (en base64) y le pide
 // a Claude que estime sus macros. La API key de Anthropic vive SOLO aca,
 // como variable de entorno del servidor -- nunca en el codigo del cliente,
 // nunca en el repo, nunca en el chat.

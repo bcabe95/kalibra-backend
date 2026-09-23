@@ -1,4 +1,4 @@
-# Kalibra Backend — análisis de fotos de comida
+# KalibraFit Backend — análisis de fotos de comida
 
 Backend de un solo endpoint: recibe una foto de comida y le pide a Claude
 que estime sus calorías y macros. Existe porque **ningún artifact estático
