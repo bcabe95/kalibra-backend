@@ -25,6 +25,9 @@ nunca en el código del demo web ni en el repo.
    - `ANTHROPIC_API_KEY` = tu clave real de Anthropic
    - `APP_SHARED_SECRET` = cualquier texto largo que inventes (opcional
      pero recomendado — ver la nota de seguridad en `api/analyze-food.js`)
+   - `SITE_ACCESS_PASSWORD` = la clave que le vas a pasar a quien pruebe la
+     beta (opcional — sin esta variable, el sitio queda abierto para
+     cualquiera; ver la sección 3 más abajo)
 4. Deploy. Si agregaste las variables después del primer deploy, hace falta
    un **Redeploy** para que las tome.
 
@@ -37,14 +40,36 @@ vercel          # despliegue de prueba
 vercel --prod   # despliegue de producción
 vercel env add ANTHROPIC_API_KEY
 vercel env add APP_SHARED_SECRET
+vercel env add SITE_ACCESS_PASSWORD
 ```
 
-## 3. El demo web vive en `public/index.html`, no en el Artifact de Claude
+## 3. Clave de acceso al sitio (beta privada)
+
+Mientras la app no esté lanzada de verdad, `api/app.js` pide una clave
+compartida (Basic Auth del navegador — sale el cuadro nativo pidiendo
+usuario/contraseña) antes de mostrar la página. El usuario puede ser
+cualquier cosa, solo se revisa la contraseña contra `SITE_ACCESS_PASSWORD`.
+
+- **Para activarla**: configura `SITE_ACCESS_PASSWORD` en Vercel (ver
+  arriba) y comparte esa clave con quien deba probar la beta.
+- **Para dejar el sitio abierto** (por ejemplo, el día del lanzamiento
+  real): borra esa variable de entorno en Vercel y redeploy — sin ella,
+  `api/app.js` deja pasar a cualquiera.
+- El HTML de la app vive en `app-src/index.html` (no en `public/`) a
+  propósito: si estuviera en `public/`, Vercel lo serviría como archivo
+  estático directo, sin pasar por el chequeo de la clave. `api/app.js` es
+  la única puerta hacia ese archivo — primero valida, después lo lee y lo
+  devuelve.
+- El endpoint `/api/analyze-food` (la foto con IA) sigue con su propia
+  protección aparte (`APP_SHARED_SECRET`, sección de abajo) — no depende
+  de `SITE_ACCESS_PASSWORD`.
+
+## 4. El demo web vive en `app-src/index.html`, no en el Artifact de Claude
 
 **Importante — esto costó descubrirlo:** los Artifacts de Claude (el link
 `claude.ai/code/artifact/...`) bloquean por política de seguridad que la
 página haga `fetch()` a cualquier servidor externo, el tuyo incluido. Por
-eso la app completa (`public/index.html`, la misma que el Artifact pero
+eso la app completa (`app-src/index.html`, la misma que el Artifact pero
 con `FOOD_ANALYZE_URL = "/api/analyze-food"` en vez de vacío) se publica
 **en este mismo proyecto de Vercel**, junto al backend — al ser el mismo
 origen, el `fetch()` sí funciona. El link del Artifact en claude.ai sigue
