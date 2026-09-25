@@ -28,6 +28,8 @@ nunca en el código del demo web ni en el repo.
    - `SITE_ACCESS_PASSWORD` = la clave que le vas a pasar a quien pruebe la
      beta (opcional — sin esta variable, el sitio queda abierto para
      cualquiera; ver la sección 3 más abajo)
+   - `SITE_ACCESS_USER` = el usuario que va con esa clave (opcional — sin
+     esta variable, el campo de usuario no se valida, solo la clave)
 4. Deploy. Si agregaste las variables después del primer deploy, hace falta
    un **Redeploy** para que las tome.
 
@@ -41,19 +43,27 @@ vercel --prod   # despliegue de producción
 vercel env add ANTHROPIC_API_KEY
 vercel env add APP_SHARED_SECRET
 vercel env add SITE_ACCESS_PASSWORD
+vercel env add SITE_ACCESS_USER
 ```
 
 ## 3. Clave de acceso al sitio (beta privada)
 
-Mientras la app no esté lanzada de verdad, `api/app.js` pide una clave
-compartida (Basic Auth del navegador — sale el cuadro nativo pidiendo
-usuario/contraseña) antes de mostrar la página. El usuario puede ser
-cualquier cosa, solo se revisa la contraseña contra `SITE_ACCESS_PASSWORD`.
+Mientras la app no esté lanzada de verdad, `api/app.js` pide un
+usuario/clave compartidos (Basic Auth del navegador — sale el cuadro
+nativo pidiendo usuario/contraseña) antes de mostrar la página. Valores
+actuales: usuario `kalibrafit`, clave `kfit2026`.
 
-- **Para activarla**: configura `SITE_ACCESS_PASSWORD` en Vercel (ver
-  arriba) y comparte esa clave con quien deba probar la beta.
+- **Para activarla o cambiarla**: configura `SITE_ACCESS_USER` /
+  `SITE_ACCESS_PASSWORD` en Vercel (ver arriba) y comparte esos valores
+  con quien deba probar la beta. Si solo configuras la clave (sin
+  `SITE_ACCESS_USER`), el campo de usuario no se valida — cualquier texto
+  sirve ahí.
+- **Solo aplica al sitio web** (`kalibra-backend.vercel.app`) — la app
+  móvil (Expo/React Native) no pasa por ningún servidor propio para
+  arrancar, así que esta clave no le afecta ni la protege a ella.
 - **Para dejar el sitio abierto** (por ejemplo, el día del lanzamiento
-  real): borra esa variable de entorno en Vercel y redeploy — sin ella,
+  real): borra `SITE_ACCESS_PASSWORD` (y `SITE_ACCESS_USER` si la
+  configuraste) en Vercel y redeploy — sin `SITE_ACCESS_PASSWORD`,
   `api/app.js` deja pasar a cualquiera.
 - El HTML de la app vive en `app-src/index.html` (no en `public/`) a
   propósito: si estuviera en `public/`, Vercel lo serviría como archivo
