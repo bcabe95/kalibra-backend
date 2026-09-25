@@ -9,11 +9,15 @@
 // función es la única forma de llegar a su contenido: primero valida la
 // clave, recién después lee y devuelve el archivo.
 //
-// La clave vive en la variable de entorno SITE_ACCESS_PASSWORD (Vercel
-// dashboard -> Project Settings -> Environment Variables). Si esa variable
-// no está configurada, la función deja pasar a cualquiera (para que
+// La clave vive en la variable de entorno SITE_ACCESS_PASSWORD, y
+// opcionalmente el usuario en SITE_ACCESS_USER (Vercel dashboard ->
+// Project Settings -> Environment Variables). Si SITE_ACCESS_PASSWORD no
+// está configurada, la función deja pasar a cualquiera (para que
 // "vercel dev" sin configurar siga funcionando) — hay que configurarla en
-// producción para que la puerta esté realmente activa.
+// producción para que la puerta esté realmente activa. Si
+// SITE_ACCESS_USER no está configurada, no se valida el usuario (cualquier
+// texto sirve ahí, solo importa la clave) — así el gate sigue funcionando
+// aunque solo se configure la clave.
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
@@ -47,23 +51,27 @@ function setSecurityHeaders(res) {
 
 module.exports = async function handler(req, res) {
   const password = process.env.SITE_ACCESS_PASSWORD;
+  const expectedUser = process.env.SITE_ACCESS_USER;
 
   if (password) {
     const header = req.headers.authorization || "";
     const [scheme, encoded] = header.split(" ");
-    let provided = "";
+    let providedUser = "";
+    let providedPass = "";
     if (scheme === "Basic" && encoded) {
       try {
         const decoded = Buffer.from(encoded, "base64").toString("utf8");
-        // "usuario:clave" -- el usuario no se valida, cualquier texto sirve
-        // ahí; solo importa lo que venga después de los ":".
         const sep = decoded.indexOf(":");
-        provided = sep >= 0 ? decoded.slice(sep + 1) : decoded;
+        providedUser = sep >= 0 ? decoded.slice(0, sep) : "";
+        providedPass = sep >= 0 ? decoded.slice(sep + 1) : decoded;
       } catch (e) {
-        provided = "";
+        providedUser = "";
+        providedPass = "";
       }
     }
-    if (!provided || !timingSafeEqualStrings(provided, password)) {
+    const userOk = !expectedUser || timingSafeEqualStrings(providedUser, expectedUser);
+    const passOk = !!providedPass && timingSafeEqualStrings(providedPass, password);
+    if (!userOk || !passOk) {
       setSecurityHeaders(res);
       res.setHeader("WWW-Authenticate", 'Basic realm="KalibraFit", charset="UTF-8"');
       // Nunca cachear una respuesta 401/200 de esta ruta -- si el borde de
