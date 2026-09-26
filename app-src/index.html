@@ -1651,7 +1651,19 @@
   /* ---------------------------------------------------------------- */
 
   var STORE_KEY = "kalibra_state_v1";
-  var todayStr = function(){ return new Date().toISOString().slice(0,10); };
+  // OJO: nunca usar new Date().toISOString().slice(0,10) acá — toISOString()
+  // siempre da la fecha en UTC, no en la hora local del navegador. Para
+  // Chile (UTC-3/UTC-4) eso hacía que el "día" cambiara internamente 3-4
+  // horas ANTES de la medianoche real — lo registrado entre esas horas y la
+  // medianoche local quedaba guardado bajo el día siguiente. Los getters
+  // locales (getFullYear/getMonth/getDate) sí respetan la zona horaria del
+  // dispositivo.
+  var todayStr = function(){
+    var d = new Date();
+    var m = String(d.getMonth()+1).padStart(2,"0");
+    var day = String(d.getDate()).padStart(2,"0");
+    return d.getFullYear()+"-"+m+"-"+day;
+  };
 
   function defaultState(){
     return {
