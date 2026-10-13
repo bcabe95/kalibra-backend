@@ -583,6 +583,7 @@
     "modal.tempoPill": { es:"Tempo {tempo}", en:"Tempo {tempo}", it:"Tempo {tempo}", pt:"Tempo {tempo}" },
     "modal.tempoLine": { es:"Tempo {tempo}: baja en {e} s, pausa {p} s abajo y sube en {c} s — unos {tut} s bajo tensión por serie.", en:"Tempo {tempo}: lower for {e} s, pause {p} s at the bottom and lift in {c} s — about {tut} s under tension per set.", it:"Tempo {tempo}: scendi in {e} s, pausa di {p} s in basso e risali in {c} s — circa {tut} s sotto tensione per serie.", pt:"Tempo {tempo}: desça em {e} s, pause {p} s embaixo e suba em {c} s — cerca de {tut} s sob tensão por série." },
     "modal.tempoLineNoPause": { es:"Tempo {tempo}: baja en {e} s, sin pausa abajo y sube en {c} s — unos {tut} s bajo tensión por serie.", en:"Tempo {tempo}: lower for {e} s, no pause at the bottom and lift in {c} s — about {tut} s under tension per set.", it:"Tempo {tempo}: scendi in {e} s, senza pausa in basso e risali in {c} s — circa {tut} s sotto tensione per serie.", pt:"Tempo {tempo}: desça em {e} s, sem pausa embaixo e suba em {c} s — cerca de {tut} s sob tensão por série." },
+    "legal.fullVersion": { es:"Ver versión completa en la web", en:"View full version on the web", it:"Vedi la versione completa sul web", pt:"Ver versão completa na web" },
     "modal.tempoExplosive": { es:"Tempo {tempo}: baja controlado en {e} s y sube lo más rápido y explosivo que puedas — acá no se cuenta el tiempo bajo tensión.", en:"Tempo {tempo}: lower under control for {e} s and drive up as fast and explosively as you can — time under tension isn't counted here.", it:"Tempo {tempo}: scendi controllato in {e} s e risali il più veloce ed esplosivo possibile — qui non si conta il tempo sotto tensione.", pt:"Tempo {tempo}: desça controlado em {e} s e suba o mais rápido e explosivo que puder — aqui não se conta o tempo sob tensão." },
     "wk.tempoNote": { es:"Cada ejercicio trae su tempo (segundos de bajada-pausa-subida) para controlar el tiempo bajo tensión: lo que pasas realmente trabajando el músculo en cada serie.", en:"Each exercise comes with its tempo (seconds of lowering-pause-lifting) to control time under tension: the time the muscle actually works in each set.", it:"Ogni esercizio ha il suo tempo (secondi di discesa-pausa-salita) per controllare il tempo sotto tensione: quanto il muscolo lavora davvero in ogni serie.", pt:"Cada exercício traz seu tempo (segundos de descida-pausa-subida) para controlar o tempo sob tensão: o tempo que o músculo realmente trabalha em cada série." },
     "wk.mainRestNote.principal": { es:"principal", en:"main", it:"principale", pt:"principal" },
@@ -3546,6 +3547,9 @@
       "Este aviso no nos exime de responsabilidad si actuamos con negligencia real o si te hacemos una promesa engañosa sobre lo que la app puede lograr."
     ]}
   };
+  // Versión completa de cada documento, publicada como página pública (sin la
+  // clave de acceso de la beta) — ver public/legal y scripts/build-legal-pages.py.
+  var LEGAL_PATHS = { terms:"/terminos", privacy:"/privacidad", membership:"/membresia", health:"/datos-de-salud", training:"/aviso-entrenamiento" };
   function showLegalDocModal(docKey){
     var doc = LEGAL_DOCS[docKey];
     if(!doc) return;
@@ -3557,6 +3561,7 @@
     var scroll = el('<div class="modal-scroll"></div>');
     doc.paragraphs.forEach(function(p){ scroll.appendChild(el('<p>'+escapeHtml(p)+'</p>')); });
     modal.appendChild(scroll);
+    modal.appendChild(el('<a href="'+LEGAL_PATHS[docKey]+'" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:13.5px;font-weight:700;color:var(--primary);margin-bottom:12px;">'+t("legal.fullVersion")+' ›</a>'));
     var cancel = el('<button class="btn btn-ghost btn-block">'+t("modal.close")+'</button>');
     cancel.addEventListener("click", closeModal);
     modal.appendChild(cancel);

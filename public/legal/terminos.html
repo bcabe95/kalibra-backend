@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Términos y Condiciones — KalibraFit</title>
+<meta name="description" content="Las reglas de uso de KalibraFit: quién puede usarla, tus obligaciones y los límites de responsabilidad.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#FAF7F1; --paper-raised:#FFFFFF; --ink:#1C1A17; --ink-soft:#5C574C; --ink-faint:#8A8375;
+    --rule:#E3DCCC; --rule-strong:#D2C8B2;
+    --accent:#8B1420; --accent-soft:#F4E4E2; --accent-ink:#6C0F19;
+    --flag:#96690A; --flag-bg:#FBF0DC; --flag-border:#E7CE95;
+    --ok:#3E6B4F; --ok-bg:#E7F0EA;
+    --font-serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans:'Work Sans', system-ui, -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+      --rule:#332C22; --rule-strong:#463D2E;
+      --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD;
+      --flag:#E8B84A; --flag-bg:#332507; --flag-border:#5A4413;
+      --ok:#8FC29F; --ok-bg:#1B2A20;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+    --rule:#332C22; --rule-strong:#463D2E;
+    --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD;
+    --flag:#E8B84A; --flag-bg:#332507; --flag-border:#5A4413;
+    --ok:#8FC29F; --ok-bg:#1B2A20;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:var(--font-serif);
+    margin:0; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:var(--font-serif); text-wrap:balance; font-weight:600; }
+  .eyebrow{ font-family:var(--font-sans); font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-faint); }
+  .mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  a{ color:var(--accent-ink); }
+
+  /* ---- top identity bar ---- */
+  #masthead{
+    padding:28px 24px 22px; border-bottom:1px solid var(--rule);
+    display:flex; flex-direction:column; gap:14px; align-items:center; text-align:center;
+  }
+  #masthead .mark{ display:flex; align-items:center; gap:10px; }
+  #masthead .mark .k{
+    width:34px; height:34px; border-radius:9px; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:700; font-size:17px;
+  }
+  #masthead .mark .name{ font-family:var(--font-sans); font-weight:700; font-size:19px; letter-spacing:0.02em; }
+  #masthead h1{ font-size:28px; margin:2px 0 0; }
+  #masthead p{ font-family:var(--font-sans); font-size:13.5px; color:var(--ink-soft); max-width:520px; margin:0; line-height:1.6; }
+
+  main{ max-width:760px; margin:0 auto; padding:8px 24px 100px; }
+
+  /* ---- one legal document ---- */
+  .doc{ margin-bottom:8px; }
+  .doc:first-of-type{ border-top:none; }
+  .doc-head{ padding:44px 0 22px; }
+  .doc-num{ font-family:var(--font-mono); font-size:12px; color:var(--accent-ink); letter-spacing:0.06em; }
+  .doc-head h2{ font-size:26px; margin:6px 0 10px; }
+  .doc-meta{
+    font-family:var(--font-sans); font-size:12.5px; color:var(--ink-soft); line-height:1.9;
+    display:grid; grid-template-columns:auto 1fr; gap:2px 14px; margin-top:14px;
+  }
+  .doc-meta dt{ font-weight:600; color:var(--ink-faint); }
+  .doc-meta dd{ margin:0; }
+
+  .clause{ margin:22px 0; }
+  .clause > h3{ font-size:17px; display:flex; gap:10px; align-items:baseline; margin-bottom:8px; }
+  .clause > h3 .cn{ font-family:var(--font-mono); font-size:14px; color:var(--accent-ink); flex-shrink:0; }
+  .clause p, .clause li{ font-size:16px; line-height:1.75; color:var(--ink); }
+  .clause p{ margin:0 0 12px; }
+  .clause ul, .clause ol{ margin:0 0 12px; padding-left:22px; }
+  .clause li{ margin-bottom:6px; }
+  .sub{ font-family:var(--font-sans); font-size:12.5px; color:var(--ink-faint); margin:-4px 0 12px; }
+
+  .fill{
+    font-family:var(--font-mono); font-size:0.92em; color:var(--flag);
+    background:var(--flag-bg); border:1px solid var(--flag-border); border-radius:5px;
+    padding:1px 7px; white-space:nowrap;
+  }
+
+  .callout{
+    background:var(--paper-raised); border:1px solid var(--rule-strong); border-radius:10px;
+    padding:16px 18px; margin:18px 0; font-family:var(--font-sans); font-size:13.5px; line-height:1.7; color:var(--ink-soft);
+  }
+  .callout strong{ color:var(--ink); }
+  .callout.accent{ border-color:var(--accent); background:var(--accent-soft); color:var(--ink); }
+
+  .checklist{ display:flex; flex-direction:column; gap:10px; margin:18px 0; }
+  .checkrow{
+    display:flex; gap:10px; align-items:flex-start; font-family:var(--font-sans); font-size:13.5px; line-height:1.6;
+    background:var(--paper-raised); border:1px solid var(--rule); border-radius:9px; padding:11px 14px;
+  }
+  .checkrow .box{
+    width:16px; height:16px; border:1.5px solid var(--ink-faint); border-radius:4px; flex-shrink:0; margin-top:2px;
+  }
+  .checkrow.optional{ border-style:dashed; }
+  .checkrow .tag{ font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); text-transform:uppercase; }
+
+  table.placement{ width:100%; border-collapse:collapse; font-family:var(--font-sans); font-size:13px; margin:18px 0; }
+  table.placement th, table.placement td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.55; }
+  table.placement th{ font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-faint); font-weight:700; }
+  table.placement td:first-child{ font-weight:600; white-space:nowrap; color:var(--ink); }
+
+  .payment-box{
+    background:var(--paper-raised); border:1.5px solid var(--accent); border-radius:12px;
+    padding:20px 22px; margin:18px 0; font-family:var(--font-sans);
+  }
+  .payment-box p{ font-size:14px; line-height:1.7; color:var(--ink); margin:0; }
+  .payment-box .price{ font-family:var(--font-mono); color:var(--accent-ink); font-weight:600; }
+
+  footer{
+    max-width:760px; margin:0 auto; padding:34px 24px 60px; font-family:var(--font-sans);
+    font-size:12px; color:var(--ink-faint); border-top:1px solid var(--rule); line-height:1.7;
+  }
+
+  @media (max-width:640px){
+    .doc-meta{ grid-template-columns:1fr; }
+    .clause p, .clause li{ font-size:15px; }
+  }
+  @media print{
+    #docnav{ display:none; }
+    .doc{ break-before:page; }
+  }
+
+  .site-nav{ display:flex; flex-wrap:wrap; gap:6px 14px; justify-content:center; padding:14px 16px; border-bottom:1px solid var(--rule); font-family:var(--font-sans); font-size:13px; }
+  .site-nav a{ color:var(--ink-soft); text-decoration:none; font-weight:600; }
+  .site-nav a:hover, .site-nav a[aria-current="page"]{ color:var(--accent-ink); }
+  .brand{ display:flex; align-items:center; gap:10px; justify-content:center; padding:22px 16px 6px; text-decoration:none; color:var(--ink); }
+  .brand .k{ width:30px; height:30px; border-radius:8px; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:700; font-size:16px; }
+  .brand .name{ font-family:var(--font-sans); font-weight:700; font-size:17px; letter-spacing:0.02em; }
+  .doc-list{ list-style:none; padding:0; margin:24px 0 0; display:flex; flex-direction:column; gap:12px; }
+  .doc-list a{ display:block; padding:16px 18px; border:1px solid var(--rule); border-radius:12px; background:var(--paper-raised); text-decoration:none; color:var(--ink); }
+  .doc-list a:hover{ border-color:var(--accent); }
+  .doc-list strong{ display:block; font-size:17px; margin-bottom:4px; }
+  .doc-list span{ font-family:var(--font-sans); font-size:13px; color:var(--ink-soft); line-height:1.5; }
+  .lead{ font-family:var(--font-sans); font-size:14px; color:var(--ink-soft); line-height:1.7; }
+</style>
+</head>
+<body>
+<a class="brand" href="/legal"><span class="k">K</span><span class="name">KALIBRAFIT</span></a>
+<nav class="site-nav"><a href="/legal">Inicio</a><a href="/terminos" aria-current="page">Términos y Condiciones</a><a href="/privacidad">Política de Privacidad</a><a href="/membresia">Condiciones de la Membresía</a><a href="/datos-de-salud">Consentimiento para Datos de Salud</a><a href="/aviso-entrenamiento">Aviso sobre Entrenamiento y Salud</a></nav>
+<main>
+<section class="doc">
+    <div class="doc-head">
+      <h2>Términos y Condiciones de Uso</h2>
+      <dl class="doc-meta">
+        <dt>Empresa</dt><dd>Kalibrafit Tecnología y Bienestar SpA, RUT 78.528.326-0</dd>
+        <dt>Domicilio</dt><dd>Rancagua, Región del Libertador General Bernardo O'Higgins, Chile</dd>
+        <dt>Contacto</dt><dd><a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a></dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">1.</span> Qué es KalibraFit</h3>
+      <p>KalibraFit es una aplicación de nutrición y entrenamiento que, a partir de los datos que entregas (sexo, edad, altura, peso, nivel de actividad y objetivo), calcula un déficit o superávit calórico personalizado, genera un plan de comidas y una rutina de ejercicio semanal, y te permite llevar un registro diario de calorías, agua, suplementos, peso y entrenamiento. Incluye una función opcional que estima las calorías de una comida a partir de una foto, usando un servicio de inteligencia artificial de terceros.</p>
+      <p>KalibraFit no es un servicio médico, nutricional ni de entrenamiento personalizado prestado por un profesional humano — ver el <a href="/aviso-entrenamiento">Aviso sobre Entrenamiento y Salud</a>.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">2.</span> Quién puede usarla</h3>
+      <p>KalibraFit está destinada a personas mayores de 18 años. Al registrarte, declaras que tienes al menos esa edad y que la información que entregas sobre ti es veraz y actualizada.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">3.</span> Tu cuenta y tus obligaciones</h3>
+      <ul>
+        <li>Mantener tus datos de perfil razonablemente actualizados, para que los cálculos que hace la app sigan siendo relevantes.</li>
+        <li>Usar KalibraFit para tu propio seguimiento personal, no para prestar servicios de nutrición o entrenamiento a terceros.</li>
+        <li>No usar la función de foto con IA para subir imágenes que no sean de comida, ni contenido ilegal, ofensivo o que vulnere derechos de terceros.</li>
+        <li>No intentar vulnerar, revender ni redistribuir el servicio, su código o el contenido generado por la app.</li>
+      </ul>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">4.</span> Suspensión y cierre de cuenta</h3>
+      <p>Kalibrafit Tecnología y Bienestar SpA puede suspender o cerrar tu acceso si incumples gravemente estos Términos (por ejemplo, uso abusivo de la función de IA o intentos de vulnerar el servicio), avisándote por el medio de contacto que hayas registrado, salvo que exista una razón de seguridad que justifique actuar antes de avisar. Tú puedes eliminar tu cuenta y tus datos en cualquier momento desde <strong>Perfil → Eliminar mi cuenta y mis datos</strong>.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">5.</span> Propiedad del contenido</h3>
+      <p>La marca KalibraFit, el diseño de la app, los textos, ilustraciones y la lógica de cálculo son propiedad de Kalibrafit Tecnología y Bienestar SpA. Los datos que registras sobre ti (peso, comidas, fotos, progreso) son tuyos — ver la <a href="/privacidad">Política de Privacidad</a> sobre cómo se almacenan y cómo pedir su eliminación.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">6.</span> Límites de responsabilidad</h3>
+      <p>KalibraFit entrega estimaciones y recomendaciones generales calculadas a partir de fórmulas de uso público (Mifflin-St Jeor y similares) y de lo que tú mismo declaras. No garantizamos resultados físicos específicos, y no respondemos por decisiones de salud tomadas sin supervisión profesional cuando corresponda. Esto no limita nuestra responsabilidad en casos de negligencia real de nuestra parte, incumplimiento grave del servicio, o si te hicimos una promesa engañosa sobre lo que la app puede hacer — esos casos se rigen por las reglas generales de la Ley del Consumidor y del derecho común chileno.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">7.</span> Cambios a estos Términos</h3>
+      <p>Si cambiamos estos Términos de forma relevante, te avisaremos dentro de la app antes de que entren en vigencia y, cuando corresponda, te pediremos aceptarlos de nuevo. La fecha y versión vigente siempre aparecen arriba de este documento.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">8.</span> Ley aplicable y contacto</h3>
+      <p>Estos Términos se rigen por las leyes de la República de Chile. Cualquier consulta o reclamo puede dirigirse a <a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a>.</p>
+    </div>
+  </section>
+</main>
+<footer>Kalibrafit Tecnología y Bienestar SpA · RUT 78.528.326-0 · Rancagua, Región del Libertador General Bernardo O&#x27;Higgins, Chile · <a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a><br>Estos documentos son la versión completa; dentro de la app se muestra una versión resumida.</footer>
+</body>
+</html>

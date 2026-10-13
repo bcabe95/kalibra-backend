@@ -1,0 +1,425 @@
+<title>Documentos Legales KalibraFit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#FAF7F1; --paper-raised:#FFFFFF; --ink:#1C1A17; --ink-soft:#5C574C; --ink-faint:#8A8375;
+    --rule:#E3DCCC; --rule-strong:#D2C8B2;
+    --accent:#8B1420; --accent-soft:#F4E4E2; --accent-ink:#6C0F19;
+    --flag:#96690A; --flag-bg:#FBF0DC; --flag-border:#E7CE95;
+    --ok:#3E6B4F; --ok-bg:#E7F0EA;
+    --font-serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans:'Work Sans', system-ui, -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+      --rule:#332C22; --rule-strong:#463D2E;
+      --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD;
+      --flag:#E8B84A; --flag-bg:#332507; --flag-border:#5A4413;
+      --ok:#8FC29F; --ok-bg:#1B2A20;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+    --rule:#332C22; --rule-strong:#463D2E;
+    --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD;
+    --flag:#E8B84A; --flag-bg:#332507; --flag-border:#5A4413;
+    --ok:#8FC29F; --ok-bg:#1B2A20;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:var(--font-serif);
+    margin:0; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:var(--font-serif); text-wrap:balance; font-weight:600; }
+  .eyebrow{ font-family:var(--font-sans); font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-faint); }
+  .mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  a{ color:var(--accent-ink); }
+
+  /* ---- top identity bar ---- */
+  #masthead{
+    padding:28px 24px 22px; border-bottom:1px solid var(--rule);
+    display:flex; flex-direction:column; gap:14px; align-items:center; text-align:center;
+  }
+  #masthead .mark{ display:flex; align-items:center; gap:10px; }
+  #masthead .mark .k{
+    width:34px; height:34px; border-radius:9px; background:var(--accent); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:700; font-size:17px;
+  }
+  #masthead .mark .name{ font-family:var(--font-sans); font-weight:700; font-size:19px; letter-spacing:0.02em; }
+  #masthead h1{ font-size:28px; margin:2px 0 0; }
+  #masthead p{ font-family:var(--font-sans); font-size:13.5px; color:var(--ink-soft); max-width:520px; margin:0; line-height:1.6; }
+
+  /* ---- doc nav ---- */
+  #docnav{
+    position:sticky; top:0; z-index:5; background:var(--paper);
+    border-bottom:1px solid var(--rule); padding:10px 16px;
+    display:flex; gap:6px; overflow-x:auto; justify-content:center;
+  }
+  #docnav a{
+    font-family:var(--font-sans); font-size:12.5px; font-weight:600; color:var(--ink-soft);
+    text-decoration:none; padding:7px 13px; border-radius:99px; white-space:nowrap; border:1px solid transparent;
+  }
+  #docnav a:hover{ border-color:var(--rule-strong); color:var(--ink); }
+  #docnav a .n{ font-family:var(--font-mono); color:var(--ink-faint); margin-right:5px; }
+
+  main{ max-width:760px; margin:0 auto; padding:8px 24px 100px; }
+
+  /* ---- one legal document ---- */
+  .doc{ padding-top:56px; margin-top:-56px; border-top:1px solid var(--rule); margin-bottom:8px; }
+  .doc:first-of-type{ border-top:none; }
+  .doc-head{ padding:44px 0 22px; }
+  .doc-num{ font-family:var(--font-mono); font-size:12px; color:var(--accent-ink); letter-spacing:0.06em; }
+  .doc-head h2{ font-size:26px; margin:6px 0 10px; }
+  .doc-meta{
+    font-family:var(--font-sans); font-size:12.5px; color:var(--ink-soft); line-height:1.9;
+    display:grid; grid-template-columns:auto 1fr; gap:2px 14px; margin-top:14px;
+  }
+  .doc-meta dt{ font-weight:600; color:var(--ink-faint); }
+  .doc-meta dd{ margin:0; }
+
+  .clause{ margin:22px 0; }
+  .clause > h3{ font-size:17px; display:flex; gap:10px; align-items:baseline; margin-bottom:8px; }
+  .clause > h3 .cn{ font-family:var(--font-mono); font-size:14px; color:var(--accent-ink); flex-shrink:0; }
+  .clause p, .clause li{ font-size:16px; line-height:1.75; color:var(--ink); }
+  .clause p{ margin:0 0 12px; }
+  .clause ul, .clause ol{ margin:0 0 12px; padding-left:22px; }
+  .clause li{ margin-bottom:6px; }
+  .sub{ font-family:var(--font-sans); font-size:12.5px; color:var(--ink-faint); margin:-4px 0 12px; }
+
+  .fill{
+    font-family:var(--font-mono); font-size:0.92em; color:var(--flag);
+    background:var(--flag-bg); border:1px solid var(--flag-border); border-radius:5px;
+    padding:1px 7px; white-space:nowrap;
+  }
+
+  .callout{
+    background:var(--paper-raised); border:1px solid var(--rule-strong); border-radius:10px;
+    padding:16px 18px; margin:18px 0; font-family:var(--font-sans); font-size:13.5px; line-height:1.7; color:var(--ink-soft);
+  }
+  .callout strong{ color:var(--ink); }
+  .callout.accent{ border-color:var(--accent); background:var(--accent-soft); color:var(--ink); }
+
+  .checklist{ display:flex; flex-direction:column; gap:10px; margin:18px 0; }
+  .checkrow{
+    display:flex; gap:10px; align-items:flex-start; font-family:var(--font-sans); font-size:13.5px; line-height:1.6;
+    background:var(--paper-raised); border:1px solid var(--rule); border-radius:9px; padding:11px 14px;
+  }
+  .checkrow .box{
+    width:16px; height:16px; border:1.5px solid var(--ink-faint); border-radius:4px; flex-shrink:0; margin-top:2px;
+  }
+  .checkrow.optional{ border-style:dashed; }
+  .checkrow .tag{ font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); text-transform:uppercase; }
+
+  table.placement{ width:100%; border-collapse:collapse; font-family:var(--font-sans); font-size:13px; margin:18px 0; }
+  table.placement th, table.placement td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:top; line-height:1.55; }
+  table.placement th{ font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-faint); font-weight:700; }
+  table.placement td:first-child{ font-weight:600; white-space:nowrap; color:var(--ink); }
+
+  .payment-box{
+    background:var(--paper-raised); border:1.5px solid var(--accent); border-radius:12px;
+    padding:20px 22px; margin:18px 0; font-family:var(--font-sans);
+  }
+  .payment-box p{ font-size:14px; line-height:1.7; color:var(--ink); margin:0; }
+  .payment-box .price{ font-family:var(--font-mono); color:var(--accent-ink); font-weight:600; }
+
+  footer{
+    max-width:760px; margin:0 auto; padding:34px 24px 60px; font-family:var(--font-sans);
+    font-size:12px; color:var(--ink-faint); border-top:1px solid var(--rule); line-height:1.7;
+  }
+
+  @media (max-width:640px){
+    .doc-meta{ grid-template-columns:1fr; }
+    .clause p, .clause li{ font-size:15px; }
+  }
+  @media print{
+    #docnav{ display:none; }
+    .doc{ break-before:page; }
+  }
+</style>
+
+<header id="masthead">
+  <div class="mark"><div class="k">K</div><div class="name">KALIBRAFIT</div></div>
+  <h1>Documentos legales</h1>
+  <p>Los cinco documentos que debe tener lista la app antes de lanzarse o de correr una beta con datos reales — términos de uso, privacidad, condiciones de la membresía, consentimiento de datos de salud, y el aviso de entrenamiento. Ya llevan los datos reales de la empresa (Kalibrafit Tecnología y Bienestar SpA, RUT 78.528.326-0) y su correo de contacto, kalibrafit@gmail.com.</p>
+</header>
+
+<nav id="docnav">
+  <a href="#terminos"><span class="n">01</span>Términos</a>
+  <a href="#privacidad"><span class="n">02</span>Privacidad</a>
+  <a href="#membresia"><span class="n">03</span>Membresía</a>
+  <a href="#salud"><span class="n">04</span>Datos de salud</a>
+  <a href="#entrenamiento"><span class="n">05</span>Aviso de entrenamiento</a>
+</nav>
+
+<main>
+
+  <!-- ============================================================ 1. TÉRMINOS ============================================================ -->
+  <section class="doc" id="terminos">
+    <div class="doc-head">
+      <div class="doc-num">Documento 01 / 05</div>
+      <h2>Términos y Condiciones de Uso</h2>
+      <dl class="doc-meta">
+        <dt>Empresa</dt><dd>Kalibrafit Tecnología y Bienestar SpA, RUT 78.528.326-0</dd>
+        <dt>Domicilio</dt><dd>Rancagua, Región del Libertador General Bernardo O'Higgins, Chile</dd>
+        <dt>Contacto</dt><dd>kalibrafit@gmail.com</dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">1.</span> Qué es KalibraFit</h3>
+      <p>KalibraFit es una aplicación de nutrición y entrenamiento que, a partir de los datos que entregas (sexo, edad, altura, peso, nivel de actividad y objetivo), calcula un déficit o superávit calórico personalizado, genera un plan de comidas y una rutina de ejercicio semanal, y te permite llevar un registro diario de calorías, agua, suplementos, peso y entrenamiento. Incluye una función opcional que estima las calorías de una comida a partir de una foto, usando un servicio de inteligencia artificial de terceros.</p>
+      <p>KalibraFit no es un servicio médico, nutricional ni de entrenamiento personalizado prestado por un profesional humano — ver el <a href="#entrenamiento">Aviso sobre Entrenamiento y Salud</a>.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">2.</span> Quién puede usarla</h3>
+      <p>KalibraFit está destinada a personas mayores de 18 años. Al registrarte, declaras que tienes al menos esa edad y que la información que entregas sobre ti es veraz y actualizada.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">3.</span> Tu cuenta y tus obligaciones</h3>
+      <ul>
+        <li>Mantener tus datos de perfil razonablemente actualizados, para que los cálculos que hace la app sigan siendo relevantes.</li>
+        <li>Usar KalibraFit para tu propio seguimiento personal, no para prestar servicios de nutrición o entrenamiento a terceros.</li>
+        <li>No usar la función de foto con IA para subir imágenes que no sean de comida, ni contenido ilegal, ofensivo o que vulnere derechos de terceros.</li>
+        <li>No intentar vulnerar, revender ni redistribuir el servicio, su código o el contenido generado por la app.</li>
+      </ul>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">4.</span> Suspensión y cierre de cuenta</h3>
+      <p>Kalibrafit Tecnología y Bienestar SpA puede suspender o cerrar tu acceso si incumples gravemente estos Términos (por ejemplo, uso abusivo de la función de IA o intentos de vulnerar el servicio), avisándote por el medio de contacto que hayas registrado, salvo que exista una razón de seguridad que justifique actuar antes de avisar. Tú puedes eliminar tu cuenta y tus datos en cualquier momento desde <strong>Perfil → Eliminar mi cuenta y mis datos</strong>.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">5.</span> Propiedad del contenido</h3>
+      <p>La marca KalibraFit, el diseño de la app, los textos, ilustraciones y la lógica de cálculo son propiedad de Kalibrafit Tecnología y Bienestar SpA. Los datos que registras sobre ti (peso, comidas, fotos, progreso) son tuyos — ver la <a href="#privacidad">Política de Privacidad</a> sobre cómo se almacenan y cómo pedir su eliminación.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">6.</span> Límites de responsabilidad</h3>
+      <p>KalibraFit entrega estimaciones y recomendaciones generales calculadas a partir de fórmulas de uso público (Mifflin-St Jeor y similares) y de lo que tú mismo declaras. No garantizamos resultados físicos específicos, y no respondemos por decisiones de salud tomadas sin supervisión profesional cuando corresponda. Esto no limita nuestra responsabilidad en casos de negligencia real de nuestra parte, incumplimiento grave del servicio, o si te hicimos una promesa engañosa sobre lo que la app puede hacer — esos casos se rigen por las reglas generales de la Ley del Consumidor y del derecho común chileno.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">7.</span> Cambios a estos Términos</h3>
+      <p>Si cambiamos estos Términos de forma relevante, te avisaremos dentro de la app antes de que entren en vigencia y, cuando corresponda, te pediremos aceptarlos de nuevo. La fecha y versión vigente siempre aparecen arriba de este documento.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">8.</span> Ley aplicable y contacto</h3>
+      <p>Estos Términos se rigen por las leyes de la República de Chile. Cualquier consulta o reclamo puede dirigirse a kalibrafit@gmail.com.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ 2. PRIVACIDAD ============================================================ -->
+  <section class="doc" id="privacidad">
+    <div class="doc-head">
+      <div class="doc-num">Documento 02 / 05</div>
+      <h2>Política de Privacidad</h2>
+      <dl class="doc-meta">
+        <dt>Responsable</dt><dd>Kalibrafit Tecnología y Bienestar SpA, RUT 78.528.326-0</dd>
+        <dt>Contacto de datos</dt><dd>kalibrafit@gmail.com</dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="callout accent">
+      <strong>En una frase:</strong> tu perfil, tus comidas y tu progreso se guardan en tu propio teléfono, no en un servidor nuestro. Lo único que sale de tu teléfono es la foto de comida, si usas esa función — y solo para estimar sus calorías, sin guardarla después.
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">1.</span> Qué datos recopilamos</h3>
+      <ul>
+        <li><strong>Datos de perfil:</strong> nombre (opcional), sexo biológico, edad, estatura, peso, peso objetivo, nivel de actividad, lugar y días de entrenamiento, idioma.</li>
+        <li><strong>Datos de salud (opcionales):</strong> condiciones que marques para ajustar tu rutina — ver el <a href="#salud">Consentimiento de Datos de Salud</a>.</li>
+        <li><strong>Datos de uso:</strong> comidas y bebidas alcohólicas que registras, agua, suplementos marcados, peso a lo largo del tiempo, entrenamientos completados, horas de sueño y nivel de estrés que declares (opcionales).</li>
+        <li><strong>Fotos de comida</strong>, solo si usas la función de estimación con IA.</li>
+        <li><strong>Sugerencias</strong> que nos envíes por el formulario de la app.</li>
+      </ul>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">2.</span> Dónde se almacenan</h3>
+      <p>Todo lo anterior —excepto la foto de comida mientras se procesa— se guarda <strong>localmente en tu dispositivo</strong>, no en un servidor de Kalibrafit Tecnología y Bienestar SpA. Si desinstalas la app o usas "Eliminar mi cuenta y mis datos", esa información se borra y nosotros no conservamos una copia en paralelo.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">3.</span> Para qué los usamos</h3>
+      <ul>
+        <li>Calcular tu gasto calórico, tu meta diaria y tus macronutrientes.</li>
+        <li>Generar tu plan de comidas y tu rutina de entrenamiento, y ajustarla según las condiciones de salud que marques y tu recuperación (sueño y estrés).</li>
+        <li>Mostrarte tu progreso (peso, racha, historial).</li>
+        <li>Estimar las calorías de una foto de comida, cuando usas esa función.</li>
+      </ul>
+      <p>No usamos tus datos de salud ni de perfil para publicidad, y no los vendemos a terceros.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">4.</span> Con quién se comparten</h3>
+      <p>Si usas la función de foto con IA, la imagen se envía a nuestro propio servidor, que a su vez se la envía a <strong>Anthropic</strong> (proveedor de la IA que hace la estimación) solo para ese análisis puntual. La foto no queda guardada en nuestro servidor una vez procesada, y no la compartimos con nadie más. Ningún otro dato de tu perfil sale de tu teléfono.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">5.</span> Cuánto tiempo se conservan</h3>
+      <p>Mientras mantengas la app instalada con tu perfil activo. Las fotos enviadas para análisis se procesan al momento y no quedan almacenadas. Los registros de error del servidor (sin datos de perfil asociados) se conservan hasta 30 días solo para detectar fallas técnicas.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">6.</span> Tus derechos</h3>
+      <p>Puedes acceder, corregir o eliminar tus datos directamente desde la app en cualquier momento (Perfil → editar, o Perfil → Eliminar mi cuenta y mis datos). Conforme a la Ley N.º 19.628 y a la nueva ley de protección de datos personales (vigente desde el 1 de diciembre de 2026), también puedes ejercer tus derechos de acceso, rectificación, cancelación, oposición y portabilidad escribiendo a kalibrafit@gmail.com.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">7.</span> Menores de edad</h3>
+      <p>KalibraFit no está dirigida a menores de 18 años y no recopila deliberadamente datos de menores.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">8.</span> Cambios a esta política</h3>
+      <p>Si cambiamos qué datos recopilamos o cómo los usamos, te lo avisaremos dentro de la app antes de que el cambio entre en vigencia.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ 3. MEMBRESÍA ============================================================ -->
+  <section class="doc" id="membresia">
+    <div class="doc-head">
+      <div class="doc-num">Documento 03 / 05</div>
+      <h2>Condiciones de la Membresía</h2>
+      <dl class="doc-meta">
+        <dt>Vendedor</dt><dd>Kalibrafit Tecnología y Bienestar SpA, RUT 78.528.326-0</dd>
+        <dt>Contacto</dt><dd>kalibrafit@gmail.com</dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="payment-box">
+      <p><strong>Plan único</strong> — <span class="price">$6.990 CLP/mes, IVA incluido</span>. Incluye 3 días de prueba gratuita la primera vez que te registras en este dispositivo.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">1.</span> Cobro y renovación</h3>
+      <p>Terminada la prueba gratuita, la membresía se cobra mensualmente y <strong>se renueva en forma automática</strong> cada mes, en la misma fecha en que se activó, hasta que la canceles. El cobro lo procesa la tienda de aplicaciones (App Store o Google Play) con el medio de pago que tengas registrado ahí — KalibraFit no guarda tus datos de tarjeta.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">2.</span> Cómo cancelar</h3>
+      <p>Puedes cancelar cuando quieras desde <strong>Perfil → Membresía → Cancelar suscripción</strong>, que te lleva a la administración de suscripciones de tu tienda (App Store o Google Play). Cancelar detiene el próximo cobro; no genera un reembolso automático del período ya pagado.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">3.</span> Qué pasa al cancelar</h3>
+      <p>Mantienes acceso a las funciones de la membresía hasta el final del período que ya pagaste. Después de esa fecha, la app vuelve al estado de "sin suscripción" — tus datos locales (perfil, historial, progreso) no se borran por cancelar, solo se pierde el acceso a las funciones pagas.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">4.</span> Retracto y devoluciones</h3>
+      <p>Conforme a la Ley N.º 19.496 sobre Protección de los Derechos de los Consumidores, tienes derecho a retractarte dentro de los <strong>10 días corridos</strong> siguientes a la contratación, siempre que no hayas hecho uso efectivo del servicio pagado. Para ejercerlo, escríbenos a kalibrafit@gmail.com. Además, App Store y Google Play tienen sus propias políticas de reembolso, que también puedes usar directamente desde tu cuenta de esa tienda.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">5.</span> Pago rechazado</h3>
+      <p>Si el cobro mensual es rechazado, la tienda reintentará el cobro según su propia política; si no se logra cobrar, tu membresía queda suspendida hasta que se regularice el pago o canceles la suscripción.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">6.</span> Cambios de precio</h3>
+      <p>Si cambiamos el precio de la membresía, avisaremos con al menos 30 días de anticipación dentro de la app antes de que el nuevo precio te sea cobrado.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ 4. SALUD ============================================================ -->
+  <section class="doc" id="salud">
+    <div class="doc-head">
+      <div class="doc-num">Documento 04 / 05</div>
+      <h2>Consentimiento para Datos de Salud</h2>
+      <dl class="doc-meta">
+        <dt>Se solicita</dt><dd>antes del paso "¿Tienes alguna condición?" del registro</dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">1.</span> Por qué te lo pedimos</h3>
+      <p>En el paso siguiente puedes marcar si tienes espalda/columna, rodillas, hombro, presión alta/corazón o embarazo, para que ajustemos tu rutina evitando movimientos de más riesgo. Es información sensible, así que te pedimos tu autorización aparte de los Términos generales.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">2.</span> Texto que ve la persona antes de continuar</h3>
+      <div class="callout">"Vamos a pedirte si tienes alguna condición de salud para ajustar tu rutina. Es información sensible y opcional — puedes dejarlo en blanco. Si la entregas, la usamos solo para adaptar tus ejercicios dentro de esta app, se guarda en tu teléfono y puedes borrarla cuando quieras desde tu Perfil."</div>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">3.</span> Sueño y estrés</h3>
+      <p>También puedes registrar cada día tus horas de sueño y tu nivel de estrés (de 1 a 5). Son datos de salud: opcionales, se guardan solo en tu dispositivo y los usamos para estimar tu recuperación. <strong>KalibraFit no mide tu cortisol</strong>; si tu recuperación está baja, suaviza tu déficit calórico y baja series de los ejercicios accesorios. Si no autorizas datos de salud, esta función no se muestra.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">4.</span> Cómo se revoca</h3>
+      <p>Puedes borrar o cambiar tus condiciones marcadas en cualquier momento desde <strong>Perfil → Editar</strong>, o eliminar todos tus datos desde <strong>Perfil → Eliminar mi cuenta y mis datos</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ 5. ENTRENAMIENTO ============================================================ -->
+  <section class="doc" id="entrenamiento">
+    <div class="doc-head">
+      <div class="doc-num">Documento 05 / 05</div>
+      <h2>Aviso sobre Entrenamiento y Salud</h2>
+      <dl class="doc-meta">
+        <dt>Se muestra</dt><dd>en cada ficha de ejercicio y antes de empezar el registro</dd>
+        <dt class="mono">Versión</dt><dd class="mono">v1.4 — vigente desde 6 de octubre de 2026</dd>
+      </dl>
+    </div>
+
+    <div class="clause">
+      <p>Las rutinas, planes de alimentación y ajustes por condición de salud que entrega KalibraFit son <strong>recomendaciones generales</strong>, calculadas a partir de fórmulas públicas y de lo que tú declaras — no son una evaluación médica, nutricional ni kinesiológica personalizada.</p>
+      <p>Si tienes una lesión, una enfermedad, estás embarazada o sientes dolor o síntomas al entrenar, <strong>consulta a un profesional de la salud</strong> antes de seguir un plan de ejercicio o alimentación, y antes de usar cargas altas.</p>
+      <p>Este aviso no nos exime de responsabilidad si actuamos con negligencia real o si te hacemos una promesa engañosa sobre lo que la app puede lograr — ver la cláusula 6 de los <a href="#terminos">Términos y Condiciones</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ IMPLEMENTACIÓN ============================================================ -->
+  <section class="doc" id="implementacion">
+    <div class="doc-head">
+      <div class="doc-num">Guía de implementación</div>
+      <h2>Dónde va cada cosa en la app</h2>
+    </div>
+
+    <table class="placement">
+      <tr><th>Pantalla</th><th>Qué debe mostrar</th></tr>
+      <tr><td>Registro (onboarding)</td><td>Casillas de Términos y Privacidad antes de terminar el registro.</td></tr>
+      <tr><td>Antes de "¿Tienes alguna condición?"</td><td>Aviso breve + casilla de consentimiento de datos de salud (documento 04).</td></tr>
+      <tr><td>Pantalla de pago / activar membresía</td><td>Precio, renovación automática, cómo cancelar y derecho a retracto (documento 03) antes de confirmar.</td></tr>
+      <tr><td>Perfil</td><td>Enlaces a Términos, Privacidad; botón "Cancelar suscripción"; botón "Eliminar mi cuenta y mis datos".</td></tr>
+      <tr><td>Sitio web</td><td>Política de privacidad, términos y contacto en el pie de página.</td></tr>
+      <tr><td>Ficha de la tienda (App Store / Google Play)</td><td>Enlace público a la política de privacidad.</td></tr>
+    </table>
+
+    <div class="clause">
+      <h3><span class="cn">·</span> Casillas de aceptación en el registro</h3>
+      <div class="checklist">
+        <div class="checkrow"><div class="box"></div>He leído y acepto los Términos y Condiciones.</div>
+        <div class="checkrow"><div class="box"></div>He leído la Política de Privacidad y autorizo el tratamiento de mis datos necesarios para prestar el servicio.</div>
+        <div class="checkrow"><div class="box"></div>Autorizo el tratamiento de mis datos de salud para personalizar mi planificación.</div>
+        <div class="checkrow optional"><div class="box"></div><span class="tag">Opcional</span>&nbsp;Quiero recibir novedades y ofertas de KalibraFit por correo.</div>
+      </div>
+      <p class="sub">Ninguna casilla viene marcada por defecto. Cada aceptación queda guardada localmente con: qué se aceptó, fecha y hora, y la versión del documento vigente en ese momento — visible después en Perfil → Privacidad.</p>
+    </div>
+
+    <div class="clause">
+      <h3><span class="cn">·</span> Antes de confirmar el pago</h3>
+      <div class="payment-box">
+        <p>Membresía mensual: <span class="price">$6.990 IVA incluido</span>. La suscripción se renovará automáticamente cada mes hasta que sea cancelada. Puedes administrarla o cancelarla desde "Mi cuenta". Al continuar, aceptas las condiciones de contratación y la política de privacidad.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  KalibraFit — documentos preparados como punto de partida y pensados para revisión de un abogado antes de publicarse, en especial por la Ley del Consumidor (SERNAC) y la nueva ley de protección de datos personales vigente desde el 1 de diciembre de 2026. Datos de la empresa completos; pensados para revisión de un abogado antes del lanzamiento.
+</footer>

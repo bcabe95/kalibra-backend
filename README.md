@@ -73,6 +73,23 @@ actuales: usuario `kalibrafit`, clave `kfit2026`.
 - El endpoint `/api/analyze-food` (la foto con IA) sigue con su propia
   protección aparte (`APP_SHARED_SECRET`, sección de abajo) — no depende
   de `SITE_ACCESS_PASSWORD`.
+- Las páginas legales (`/legal`, `/privacidad`, `/terminos`, `/membresia`,
+  `/datos-de-salud`, `/aviso-entrenamiento`) son **públicas** a propósito: las
+  tiendas exigen un enlace a la política de privacidad. Viven en
+  `public/legal/` (archivos estáticos, sin pasar por la clave) y se generan con
+  `python scripts/build-legal-pages.py` a partir de `legal-src/documentos.html`
+  — edita esa fuente, vuelve a correr el script y haz commit.
+
+### Límites de uso de la foto con IA
+
+`/api/analyze-food` rechaza lo que no sea una imagen real (revisa los primeros
+bytes), imágenes de más de 2 MB, y pasa un tope de **60 pedidos por IP y por
+hora** (más uno global de 1000). Son frenos "mejor esfuerzo" — cada instancia
+serverless lleva su propia cuenta — y se ajustan con `RATE_LIMIT_PER_HOUR` y
+`RATE_LIMIT_GLOBAL_PER_HOUR`. **El tope real de gasto es el límite mensual de
+tu cuenta de Anthropic** (console.anthropic.com → Settings → Limits): conviene
+fijarlo. La protección definitiva es autenticar a cada usuario (login o recibo
+de la tienda).
 
 ## 4. El demo web vive en `app-src/index.html`, no en el Artifact de Claude
 

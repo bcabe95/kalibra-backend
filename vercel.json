@@ -1,7 +1,13 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/api/app" },
-    { "source": "/index.html", "destination": "/api/app" }
+    { "source": "/index.html", "destination": "/api/app" },
+    { "source": "/legal", "destination": "/legal/index.html" },
+    { "source": "/terminos", "destination": "/legal/terminos.html" },
+    { "source": "/privacidad", "destination": "/legal/privacidad.html" },
+    { "source": "/membresia", "destination": "/legal/membresia.html" },
+    { "source": "/datos-de-salud", "destination": "/legal/datos-de-salud.html" },
+    { "source": "/aviso-entrenamiento", "destination": "/legal/aviso-entrenamiento.html" }
   ],
   "headers": [
     {
