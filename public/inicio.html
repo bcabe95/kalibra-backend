@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KalibraFit</title>
+<meta name="description" content="App chilena para bajar de peso con déficit calórico: metas calculadas para ti, comidas con análisis por foto y rutinas de entrenamiento que se adaptan a tu recuperación.">
+<meta property="og:title" content="KalibraFit">
+<meta property="og:description" content="Metas calóricas calculadas para ti, comidas con análisis por foto y rutinas que se adaptan a tu sueño y estrés.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#FAF7F1; --paper-raised:#FFFFFF; --ink:#1C1A17; --ink-soft:#5C574C; --ink-faint:#8A8375;
+    --rule:#E3DCCC; --rule-strong:#D2C8B2;
+    --accent:#8B1420; --accent-soft:#F4E4E2; --accent-ink:#6C0F19; --on-accent:#FFFFFF;
+    --font-serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans:'Work Sans', system-ui, -apple-system, sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+      --rule:#332C22; --rule-strong:#463D2E;
+      --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD; --on-accent:#15130F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15130F; --paper-raised:#1C1915; --ink:#F0EBE1; --ink-soft:#B8AF9C; --ink-faint:#847C6C;
+    --rule:#332C22; --rule-strong:#463D2E;
+    --accent:#E8919A; --accent-soft:#3A1519; --accent-ink:#F0A5AD; --on-accent:#15130F;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--paper); color:var(--ink); font-family:var(--font-serif); margin:0; -webkit-font-smoothing:antialiased; line-height:1.6; }
+  h1,h2,h3{ font-family:var(--font-serif); font-weight:600; text-wrap:balance; margin:0; }
+  a{ color:var(--accent-ink); }
+  a:focus-visible, summary:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  .eyebrow{ font-family:var(--font-sans); font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 10px; }
+  .mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+
+  .topbar{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; max-width:960px; margin:0 auto; padding:20px 24px; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); }
+  .brand .k{ width:32px; height:32px; border-radius:9px; background:var(--accent); color:var(--on-accent); display:flex; align-items:center; justify-content:center; font-family:var(--font-sans); font-weight:700; font-size:16px; }
+  .brand .name{ font-family:var(--font-sans); font-weight:700; font-size:17px; letter-spacing:0.03em; }
+  .topbar nav{ display:flex; gap:6px 20px; flex-wrap:wrap; font-family:var(--font-sans); font-size:13.5px; font-weight:600; }
+  .topbar nav a{ color:var(--ink-soft); text-decoration:none; }
+  .topbar nav a:hover{ color:var(--accent-ink); }
+
+  main{ max-width:960px; margin:0 auto; padding:0 24px 88px; }
+
+  .hero{ padding:56px 0 64px; border-bottom:1px solid var(--rule); }
+  .hero h1{ font-size:clamp(34px, 6vw, 56px); line-height:1.08; letter-spacing:-0.01em; max-width:15em; }
+  .hero h1 em{ color:var(--accent-ink); font-weight:500; }
+  .hero .lede{ font-family:var(--font-sans); font-size:17px; color:var(--ink-soft); max-width:36em; margin:22px 0 0; line-height:1.65; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; margin-top:32px; font-family:var(--font-sans); font-size:14px; }
+  .soon{ display:inline-block; padding:11px 18px; border-radius:10px; background:var(--accent); color:var(--on-accent); font-weight:700; }
+  .price b{ font-family:var(--font-mono); font-weight:600; }
+
+  section{ padding:56px 0 0; }
+  section h2{ font-size:28px; line-height:1.2; margin-bottom:8px; }
+  .intro{ font-family:var(--font-sans); font-size:15px; color:var(--ink-soft); max-width:40em; margin:0 0 28px; }
+
+  .features{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:0; border-top:1px solid var(--rule); }
+  .feature{ padding:24px 28px 26px 0; border-bottom:1px solid var(--rule); }
+  .feature:nth-child(even){ padding:24px 0 26px 28px; border-left:1px solid var(--rule); }
+  .feature h3{ font-size:20px; margin-bottom:8px; }
+  .feature p{ font-family:var(--font-sans); font-size:14.5px; color:var(--ink-soft); margin:0; line-height:1.65; }
+
+  table.facts{ width:100%; border-collapse:collapse; font-family:var(--font-sans); font-size:14.5px; }
+  table.facts th, table.facts td{ text-align:left; padding:13px 14px 13px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+  table.facts th{ width:34%; color:var(--ink-faint); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding-top:16px; }
+  .table-wrap{ overflow-x:auto; border-top:1px solid var(--rule); }
+
+  .plan{ display:flex; flex-wrap:wrap; gap:20px 48px; align-items:flex-end; padding:26px 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+  .plan .big{ font-family:var(--font-mono); font-size:40px; font-weight:600; line-height:1; }
+  .plan .big small{ font-size:15px; font-weight:500; color:var(--ink-soft); }
+  .plan ul{ margin:0; padding:0; list-style:none; font-family:var(--font-sans); font-size:14.5px; color:var(--ink-soft); display:flex; flex-direction:column; gap:6px; }
+  .plan li::before{ content:"—"; color:var(--accent); margin-right:10px; }
+
+  .notice{ font-family:var(--font-sans); font-size:13.5px; color:var(--ink-soft); background:var(--accent-soft); border-radius:10px; padding:14px 16px; margin-top:20px; line-height:1.6; }
+
+  .links{ display:flex; flex-wrap:wrap; gap:10px 22px; font-family:var(--font-sans); font-size:14px; margin-top:20px; }
+
+  footer{ max-width:960px; margin:0 auto; padding:28px 24px 48px; border-top:1px solid var(--rule); font-family:var(--font-sans); font-size:12.5px; color:var(--ink-faint); line-height:1.7; }
+
+  @media (max-width: 680px){
+    .topbar, main, footer{ padding-left:16px; padding-right:16px; }
+    .hero{ padding:36px 0 44px; }
+    .features{ grid-template-columns:1fr; }
+    .feature, .feature:nth-child(even){ padding:22px 0; border-left:none; }
+    table.facts th{ width:40%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="/inicio"><span class="k">K</span><span class="name">KALIBRAFIT</span></a>
+  <nav aria-label="Principal">
+    <a href="#que-hace">Qué hace</a>
+    <a href="#membresia">Membresía</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="/soporte">Soporte</a>
+    <a href="/legal">Documentos legales</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <p class="eyebrow">Nutrición y entrenamiento · Hecha en Chile</p>
+    <h1>Un déficit calórico <em>calculado para ti</em>, sin adivinar.</h1>
+    <p class="lede">KalibraFit calcula cuántas calorías y macronutrientes necesitas según tu cuerpo y tu meta, te ayuda a armar tus comidas, analiza tus platos con una foto y arma rutinas de entrenamiento que se ajustan a cómo estás durmiendo y qué tan estresado vienes.</p>
+    <div class="hero-meta">
+      <span class="soon">Próximamente en App Store y Google Play</span>
+      <span class="price"><b>$6.990</b> CLP al mes, IVA incluido · 3 días de prueba gratis</span>
+    </div>
+  </div>
+
+  <section id="que-hace">
+    <p class="eyebrow">Qué hace</p>
+    <h2>Cuatro cosas, bien hechas</h2>
+    <p class="intro">Todo lo que necesitas para sostener un déficit calórico sin planillas.</p>
+    <div class="features">
+      <div class="feature">
+        <h3>Metas según tu objetivo</h3>
+        <p>Calorías y macros a partir de tu peso, estatura, edad y nivel de actividad. Si tu meta es bajar, se aplica un déficit del 20 % sobre tu gasto; también puedes mantener o ganar.</p>
+      </div>
+      <div class="feature">
+        <h3>Comidas con foto</h3>
+        <p>Saca una foto a tu plato y la app estima calorías y macros con inteligencia artificial. Si prefieres variar, "Otra combinación" te propone un menú distinto sin romper tus metas.</p>
+      </div>
+      <div class="feature">
+        <h3>Rutinas por grupo muscular</h3>
+        <p>Ejercicios organizados por zona —por ejemplo pecho alto, medio o bajo— con series, repeticiones, tempo y descansos de 3 a 5 minutos. Cuando quieres cambiar, "Otra combinación" renueva la selección.</p>
+      </div>
+      <div class="feature">
+        <h3>Recuperación a la vista</h3>
+        <p>Registra tus horas de sueño y tu nivel de estrés. Si vienes corto de descanso, la app baja un poco el volumen de aislamiento y suaviza el déficit para que el plan sea sostenible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="detalle">
+    <p class="eyebrow">Los números detrás</p>
+    <h2>Reglas simples y explicadas</h2>
+    <p class="intro">No hay una "caja negra": estos son los criterios que usa la app.</p>
+    <div class="table-wrap">
+      <table class="facts">
+        <tr><th>Déficit al bajar</th><td>20 % bajo tu gasto diario. Con recuperación baja (promedio de sueño bajo 6 h o estrés alto en los últimos 3 días) se reduce a 10 %.</td></tr>
+        <tr><th>Descanso entre series</th><td>De 3 a 5 minutos en todos los ejercicios.</td></tr>
+        <tr><th>Tempo</th><td>Cada ejercicio indica su cadencia (por ejemplo 3-0-1) y el tiempo bajo tensión por serie.</td></tr>
+        <tr><th>Idiomas</th><td>Español, inglés, italiano y portugués.</td></tr>
+      </table>
+    </div>
+    <p class="notice">KalibraFit entrega recomendaciones generales y no reemplaza la consulta con un profesional de la salud. Si tienes una condición médica, consulta antes de cambiar tu alimentación o iniciar un plan de ejercicio.</p>
+  </section>
+
+  <section id="membresia">
+    <p class="eyebrow">Membresía</p>
+    <h2>Un solo plan</h2>
+    <div class="plan">
+      <div class="big">$6.990 <small>CLP / mes · IVA incluido</small></div>
+      <ul>
+        <li>3 días de prueba gratis la primera vez</li>
+        <li>Se renueva cada mes hasta que la canceles</li>
+        <li>El cobro y la cancelación se gestionan en App Store o Google Play</li>
+      </ul>
+    </div>
+    <div class="links"><a href="/membresia">Condiciones completas de la membresía</a></div>
+  </section>
+
+  <section id="privacidad">
+    <p class="eyebrow">Privacidad</p>
+    <h2>Tus datos se quedan en tu teléfono</h2>
+    <p class="intro">Tu perfil, historial de comidas y peso, y los datos de salud que decidas entregar se guardan en tu dispositivo, no en un servidor de KalibraFit. Las fotos de comida se envían solo para ser analizadas y no se almacenan. Puedes borrar todo cuando quieras desde la app.</p>
+    <div class="links">
+      <a href="/privacidad">Política de Privacidad</a>
+      <a href="/terminos">Términos y Condiciones</a>
+      <a href="/datos-de-salud">Datos de salud</a>
+      <a href="/aviso-entrenamiento">Aviso sobre entrenamiento</a>
+      <a href="/eliminar-cuenta">Eliminar mi cuenta</a>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="eyebrow">Contacto</p>
+    <h2>¿Dudas o sugerencias?</h2>
+    <p class="intro">Escríbenos a <a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a>. También puedes ver cómo pedir ayuda o ejercer tus derechos en <a href="/soporte">Soporte</a>.</p>
+  </section>
+</main>
+
+<footer>
+  Kalibrafit Tecnología y Bienestar SpA · RUT 78.528.326-0 · Rancagua, Región del Libertador General Bernardo O'Higgins, Chile · <a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a>
+</footer>
+
+</body>
+</html>
