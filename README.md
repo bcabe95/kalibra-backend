@@ -50,8 +50,8 @@ vercel env add SITE_ACCESS_USER
 
 Mientras la app no esté lanzada de verdad, `api/app.js` pide un
 usuario/clave compartidos (Basic Auth del navegador — sale el cuadro
-nativo pidiendo usuario/contraseña) antes de mostrar la página. Valores
-actuales: usuario `kalibrafit`, clave `kfit2026`.
+nativo pidiendo usuario/contraseña) antes de mostrar la página. Los valores
+viven solo en las variables de entorno de Vercel (no se documentan aquí).
 
 - **Para activarla o cambiarla**: configura `SITE_ACCESS_USER` /
   `SITE_ACCESS_PASSWORD` en Vercel (ver arriba) y comparte esos valores
