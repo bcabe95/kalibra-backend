@@ -22,7 +22,7 @@ OUT = os.path.join(ROOT, "public", "legal")
 COMPANY = "Kalibrafit Tecnología y Bienestar SpA"
 RUT = "78.528.326-0"
 DOMICILE = "Rancagua, Región del Libertador General Bernardo O'Higgins, Chile"
-EMAIL = "kalibrafit@gmail.com"
+EMAIL = "contacto@kalibrafit.cl"
 
 # id en la fuente -> (ruta pública, título corto, título de la página, descripción)
 DOCS = [
