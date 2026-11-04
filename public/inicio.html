@@ -55,7 +55,9 @@
   .hero h1 em{ color:var(--accent-ink); font-weight:500; }
   .hero .lede{ font-family:var(--font-sans); font-size:17px; color:var(--ink-soft); max-width:36em; margin:22px 0 0; line-height:1.65; }
   .hero-meta{ display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center; margin-top:32px; font-family:var(--font-sans); font-size:14px; }
-  .soon{ display:inline-block; padding:11px 18px; border-radius:10px; background:var(--accent); color:var(--on-accent); font-weight:700; }
+  .stores{ display:flex; flex-wrap:wrap; gap:10px; }
+  .store{ display:inline-flex; flex-direction:column; min-width:150px; padding:9px 18px 10px; border-radius:10px; background:var(--accent); color:var(--on-accent); font-weight:700; font-size:16px; line-height:1.25; }
+  .store small{ font-size:10.5px; font-weight:500; letter-spacing:0.04em; opacity:0.85; }
   .price b{ font-family:var(--font-mono); font-weight:600; }
 
   section{ padding:56px 0 0; }
@@ -113,7 +115,10 @@
     <h1>Un déficit calórico <em>calculado para ti</em>, sin adivinar.</h1>
     <p class="lede">KalibraFit calcula cuántas calorías y macronutrientes necesitas según tu cuerpo y tu meta, te ayuda a armar tus comidas, analiza tus platos con una foto y arma rutinas de entrenamiento que se ajustan a cómo estás durmiendo y qué tan estresado vienes.</p>
     <div class="hero-meta">
-      <span class="soon">Próximamente en App Store y Google Play</span>
+      <span class="stores">
+        <span class="store" role="img" aria-label="App Store: próximamente"><small>Próximamente en</small>App Store</span>
+        <span class="store" role="img" aria-label="Google Play: próximamente"><small>Próximamente en</small>Google Play</span>
+      </span>
       <span class="price"><b>$6.990</b> CLP al mes, IVA incluido · 3 días de prueba gratis</span>
     </div>
   </div>
@@ -188,6 +193,14 @@
     <p class="eyebrow">Contacto</p>
     <h2>¿Dudas o sugerencias?</h2>
     <p class="intro">Escríbenos a <a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a>. También puedes ver cómo pedir ayuda o ejercer tus derechos en <a href="/soporte">Soporte</a>.</p>
+    <div class="table-wrap">
+      <table class="facts">
+        <tr><th>Razón social</th><td>Kalibrafit Tecnología y Bienestar SpA</td></tr>
+        <tr><th>RUT</th><td class="mono">78.528.326-0</td></tr>
+        <tr><th>Domicilio</th><td>Rancagua, Región del Libertador General Bernardo O'Higgins, Chile</td></tr>
+        <tr><th>Correo</th><td><a href="mailto:kalibrafit@gmail.com">kalibrafit@gmail.com</a></td></tr>
+      </table>
+    </div>
   </section>
 </main>
 
