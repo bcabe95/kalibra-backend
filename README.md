@@ -105,8 +105,10 @@ de la app), pero la foto con IA solo funciona en la URL de Vercel.
 
 Al terminar el deploy, tu app completa (con foto funcionando) queda en:
 ```
-https://kalibra-backend-tuusuario.vercel.app/
+https://kalibra-backend-tuusuario.vercel.app/app
 ```
+(La raíz `/` muestra la página pública de inicio — Apple exige un sitio
+público y funcional para inscribir la empresa; la app beta vive en `/app`.)
 y el endpoint que usa internamente en:
 ```
 https://kalibra-backend-tuusuario.vercel.app/api/analyze-food

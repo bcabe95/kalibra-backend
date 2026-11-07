@@ -1,7 +1,8 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/api/app" },
-    { "source": "/index.html", "destination": "/api/app" },
+    { "source": "/", "destination": "/inicio.html" },
+    { "source": "/index.html", "destination": "/inicio.html" },
+    { "source": "/app", "destination": "/api/app" },
     { "source": "/inicio", "destination": "/inicio.html" },
     { "source": "/soporte", "destination": "/soporte.html" },
     { "source": "/eliminar-cuenta", "destination": "/soporte.html" },
